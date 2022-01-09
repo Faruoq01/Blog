@@ -25,8 +25,10 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const Home = () => {
+    const matches = useMediaQuery("(max-width:900px)");
     return(
         <React.Fragment>
             <CssBaseline />
@@ -77,7 +79,7 @@ const Home = () => {
                     </Box>
 
                     {/* the blog card starts here*/}
-                    <Box mt={3} sx={{height:'100%', display:'flex', justifyContent:'space-between'}}>
+                    <Box mt={3} sx={matches?main2:main}>
                         <Box sx={{width:'70%'}}>
                             <Card sx={{padding:'10px', marginBottom:'20px'}}>
                                 <CardActionArea>
@@ -461,6 +463,21 @@ const social = {
     display:'flex',
     flexDirection:'row',
     justifyContent:'flex-end',
+}
+
+const main = {
+    height:'100%', 
+    display:'flex', 
+    flexDirection:'row',
+    justifyContent:'space-between'
+}
+
+const main2 = {
+    height:'100%', 
+    display:'flex', 
+    flexDirection:'column',
+    justifyContent:'space-between',
+    bgcolor:'red'
 }
 
 const buttons = {
