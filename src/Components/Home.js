@@ -10,6 +10,10 @@ import tiktok from '../assests/tiktok.png';
 import youtube from '../assests/youtube.png';
 import pinterest from '../assests/pinterest.png';
 import hero from '../assests/hero.jpeg';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import { Button, CardActionArea, CardActions } from '@mui/material';
 
 const Home = () => {
     return(
@@ -63,7 +67,32 @@ const Home = () => {
 
                     {/* the hero starts here*/}
                     <Box mt={3} sx={{height:'100%', display:'flex', justifyContent:'space-between'}}>
-                        <Box sx={{width:'70%', height:'100%', bgcolor:'green'}}></Box>
+                        <Box sx={{width:'70%', height:'100%', bgcolor:'green'}}>
+                            <Card sx={{ maxWidth: 345 }}>
+                                <CardActionArea>
+                                    <CardMedia
+                                    component="img"
+                                    height="140"
+                                    image="/static/images/cards/contemplative-reptile.jpg"
+                                    alt="green iguana"
+                                    />
+                                    <CardContent>
+                                    <Typography gutterBottom variant="h5" component="div">
+                                        Lizard
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                        Lizards are a widespread group of squamate reptiles, with over 6,000
+                                        species, ranging across all continents except Antarctica
+                                    </Typography>
+                                    </CardContent>
+                                </CardActionArea>
+                                <CardActions>
+                                    <Button size="small" color="primary">
+                                    Share
+                                    </Button>
+                                </CardActions>
+                            </Card>
+                        </Box>
                         <Box sx={{width:'28%', height:'100%', bgcolor:'yellow'}}></Box>
                     </Box>
                 </Box>
