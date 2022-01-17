@@ -26,15 +26,21 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import MenuIcon from '@mui/icons-material/Menu';
 
 const Home = () => {
+    const [anchorEl, setAnchorEl] = React.useState(false);
     const matches = useMediaQuery("(max-width:900px)");
+    const matches2 = useMediaQuery("(max-width:1000px)");
+
+    const handleClose = () => {
+        setAnchorEl(!anchorEl);
+    }
     return(
         <React.Fragment>
             <CssBaseline />
             <Container maxWidth="lg">
                 <Box>
-
                     {/* the header starts here*/}
                     <Box pt={2} pb={1} sx={header}>
                         <Box>
@@ -42,25 +48,73 @@ const Home = () => {
                                 Blog CMS
                             </Typography>
                         </Box>
-                        <Box sx={{width:'45%'}}>
-                            <Box sx={{display:'flex', justifyContent:'space-between'}}>
-                                <Typography sx={{fontWeight:'bold', color:'#fff'}} variant="subtitle1" component="div">
-                                    Programming
-                                </Typography>
-                                <Typography sx={{fontWeight:'bold', color:'#fff'}} variant="subtitle1" component="div">
-                                    Astronomy
-                                </Typography>
-                                <Typography sx={{fontWeight:'bold', color:'#fff'}} variant="subtitle1" component="div">
-                                    Sports
-                                </Typography>
-                                <Typography sx={{fontWeight:'bold', color:'#fff'}} variant="subtitle1" component="div">
-                                    Education
-                                </Typography>
-                                <Typography sx={{fontWeight:'bold', color:'#fff'}} variant="subtitle1" component="div">
-                                    Photography
-                                </Typography>
-                            </Box>
-                        </Box>
+                        {!matches2?
+                            <Box sx={{width:'45%'}}>
+                                <Box sx={{display:'flex', justifyContent:'space-between'}}>
+                                    <Typography sx={{fontWeight:'bold', color:'#fff'}} variant="subtitle1" component="div">
+                                        Programming
+                                    </Typography>
+                                    <Typography sx={{fontWeight:'bold', color:'#fff'}} variant="subtitle1" component="div">
+                                        Astronomy
+                                    </Typography>
+                                    <Typography sx={{fontWeight:'bold', color:'#fff'}} variant="subtitle1" component="div">
+                                        Sports
+                                    </Typography>
+                                    <Typography sx={{fontWeight:'bold', color:'#fff'}} variant="subtitle1" component="div">
+                                        Education
+                                    </Typography>
+                                    <Typography sx={{fontWeight:'bold', color:'#fff'}} variant="subtitle1" component="div">
+                                        Photography
+                                    </Typography>
+                                </Box>
+                            </Box>:
+                            <div>
+                                <IconButton aria-label="share">
+                                    <MenuIcon onClick={handleClose} sx={{width:'30px', height:'30px', color:'#fff'}} />
+                                </IconButton>
+                                {anchorEl&&
+                                    <Box sx={{width:'200px', borderRadius:'10px', position:'absolute', right:'30px', bgcolor:'#fff'}}>
+                                        <List sx={{ width: '100%', fontSize:'12px', padding:'0px', marginTop:'20px'}}>
+                                            <ListItem sx={{marginLeft:'10px',marginTop:'10px', padding:'0px'}} alignItems="flex-start">
+                                                <ListItemText
+                                                sx={{fontSize:'12px'}}
+                                                primary="Programming"
+                                                />
+                                            </ListItem>
+                                            <Divider />
+                                            <ListItem sx={{marginLeft:'10px',marginTop:'10px', padding:'0px'}} alignItems="flex-start">
+                                                <ListItemText
+                                                sx={{fontSize:'12px'}}
+                                                primary="Astronomy"
+                                                />
+                                            </ListItem>
+                                            <Divider />
+                                            <ListItem sx={{marginLeft:'10px',marginTop:'10px', padding:'0px'}} alignItems="flex-start">
+                                                <ListItemText
+                                                sx={{fontSize:'12px'}}
+                                                primary="Sports"
+                                                />
+                                            </ListItem>
+                                            <Divider />
+                                            <ListItem sx={{marginLeft:'10px',marginTop:'10px', padding:'0px'}} alignItems="flex-start">
+                                                <ListItemText
+                                                sx={{fontSize:'12px'}}
+                                                primary="Education"
+                                                />
+                                            </ListItem>
+                                            <Divider />
+                                            <ListItem sx={{marginLeft:'10px',marginTop:'10px', padding:'0px'}} alignItems="flex-start">
+                                                <ListItemText
+                                                sx={{fontSize:'12px'}}
+                                                primary="Photography"
+                                                />
+                                            </ListItem>
+                                            <Divider />
+                                        </List>
+                                    </Box>
+                                }
+                            </div>  
+                        }
                     </Box>
 
                     {/* the hero starts here*/}
@@ -80,8 +134,8 @@ const Home = () => {
 
                     {/* the blog card starts here*/}
                     <Box mt={3} sx={matches?main2:main}>
-                        <Box sx={{width:'70%'}}>
-                            <Card sx={{padding:'10px', marginBottom:'20px'}}>
+                        <Box sx={matches?cardContainer2:cardContainer1}>
+                            <Card sx={matches?card2:card1}>
                                 <CardActionArea>
                                     <CardMedia
                                         component="img"
@@ -316,7 +370,7 @@ const Home = () => {
                                 </CardActions>
                             </Card>
                         </Box>
-                        <Box sx={sideBar}>
+                        <Box sx={matches?sideBar2:sideBar}>
                             <Box sx={{bgcolor:'#fff', paddingLeft:'20px', paddingRight:'20px', height:'270px', borderRadius:'5px'}}>
                                 <Box sx={recentHeader}>
                                     <Typography sx={{
@@ -466,6 +520,7 @@ const social = {
 }
 
 const main = {
+    width:'100%',
     height:'100%', 
     display:'flex', 
     flexDirection:'row',
@@ -473,11 +528,11 @@ const main = {
 }
 
 const main2 = {
+    width:'100%',
     height:'100%', 
     display:'flex', 
     flexDirection:'column',
     justifyContent:'space-between',
-    bgcolor:'red'
 }
 
 const buttons = {
@@ -507,6 +562,11 @@ const sideBar = {
     borderRadius:'5px', 
 }
 
+const sideBar2 = {
+    width:'100%', 
+    borderRadius:'5px', 
+}
+
 const recentHeader = {
     height:'50px', 
     paddingTop:'20px',
@@ -514,6 +574,25 @@ const recentHeader = {
     borderLeft:'none', 
     borderRight:'none',
     borderTop:'none',
+}
+
+const card1 = {
+    padding:'10px', 
+    marginBottom:'20px'
+}
+
+const card2 = {
+    width:'100%',
+    padding:'10px', 
+    marginBottom:'20px'
+}
+
+const cardContainer1 = {
+    width:'70%', 
+}
+
+const cardContainer2 = {
+    width:'100%', 
 }
 
 export default Home;
