@@ -28,13 +28,17 @@ import Divider from '@mui/material/Divider';
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import MenuIcon from '@mui/icons-material/Menu';
 
-const Home = () => {
+const Home = ({history}) => {
     const [anchorEl, setAnchorEl] = React.useState(false);
     const matches = useMediaQuery("(max-width:900px)");
     const matches2 = useMediaQuery("(max-width:1000px)");
 
     const handleClose = () => {
         setAnchorEl(!anchorEl);
+    }
+
+    const ContunueReading = () => {
+        history.push('/content-page')
     }
     return(
         <React.Fragment>
@@ -173,7 +177,7 @@ const Home = () => {
                                     </CardContent>
                                 </CardActionArea>
                                 <CardActions>
-                                    <Button sx={buttons} size="small" color="primary">
+                                    <Button onClick={ContunueReading} sx={buttons} size="small" color="primary">
                                         Continue Reading
                                     </Button>
                                     <IconButton aria-label="share">
@@ -220,7 +224,7 @@ const Home = () => {
                                     </CardContent>
                                 </CardActionArea>
                                 <CardActions>
-                                    <Button sx={buttons} size="small" color="primary">
+                                    <Button onClick={ContunueReading} sx={buttons} size="small" color="primary">
                                         Continue Reading
                                     </Button>
                                     <IconButton aria-label="share">
@@ -267,7 +271,7 @@ const Home = () => {
                                     </CardContent>
                                 </CardActionArea>
                                 <CardActions>
-                                    <Button sx={buttons} size="small" color="primary">
+                                    <Button onClick={ContunueReading} sx={buttons} size="small" color="primary">
                                         Continue Reading
                                     </Button>
                                     <IconButton aria-label="share">
@@ -314,7 +318,7 @@ const Home = () => {
                                     </CardContent>
                                 </CardActionArea>
                                 <CardActions>
-                                    <Button sx={buttons} size="small" color="primary">
+                                    <Button onClick={ContunueReading} sx={buttons} size="small" color="primary">
                                         Continue Reading
                                     </Button>
                                     <IconButton aria-label="share">
@@ -361,7 +365,7 @@ const Home = () => {
                                     </CardContent>
                                 </CardActionArea>
                                 <CardActions>
-                                    <Button sx={buttons} size="small" color="primary">
+                                    <Button onClick={ContunueReading} sx={buttons} size="small" color="primary">
                                         Continue Reading
                                     </Button>
                                     <IconButton aria-label="share">
