@@ -3,6 +3,9 @@ import './App.scss';
 import Home from './Components/Home';
 import Login from './Components/Login'
 import ContentPage from './Components/ContentPage';
+import Management from './Components/management/Management';
+import ForgotPassword from './Components/ForgotPassword';
+import Account from './Components/Account';
 
 function App() {
   return (
@@ -13,6 +16,16 @@ function App() {
           <Route exact path='/' component={Home}/>
           <Route path='/login' component={Login}/>
           <Route path='/content-Page' component={ContentPage}/>
+          <Route path='/management' component={Management}/>
+          <Route path='/forgot-password' component={ForgotPassword}/>
+          <Route path='/account' component={Account}/>
+
+          <Route  exact path='/' component={Management}/>
+          <Route  path='/management/setup' component={Management}/>
+          <Route  path='/management/articles' component={Management}/>
+          <Route  path='/management/comments' component={Management}/>
+          <Route  path='/management/contacts' component={Management}/>
+          <Route  path='/management/mail-list' component={Management}/>
           <Route render = {() => <h1>404 page not found</h1>} />
         </Switch>
       </div>

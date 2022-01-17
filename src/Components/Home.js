@@ -27,6 +27,7 @@ import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import MenuIcon from '@mui/icons-material/Menu';
+import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 
 const Home = ({history}) => {
     const [anchorEl, setAnchorEl] = React.useState(false);
@@ -48,9 +49,11 @@ const Home = ({history}) => {
                     {/* the header starts here*/}
                     <Box pt={2} pb={1} sx={header}>
                         <Box>
-                            <Typography sx={{fontWeight:'bold', color:'#fff'}} variant="h5" component="div">
-                                Blog CMS
-                            </Typography>
+                            <Link style={{textDecoration:'none'}} to="/login">
+                                <Typography sx={{fontWeight:'bold', color:'#fff'}} variant="h5" component="div">
+                                    Blog CMS
+                                </Typography>
+                            </Link>
                         </Box>
                         {!matches2?
                             <Box sx={{width:'45%'}}>
@@ -550,15 +553,6 @@ const buttons = {
         backgroundColor: 'red',
         color: '#fff'
     },
-}
-
-const recentPage = {
-    margin:'10px', 
-    paddingBottom:'5px', 
-    border:'1px solid #ccc',
-    borderLeft:'none',
-    borderTop:'none',
-    borderRight:'none'
 }
 
 const sideBar = {

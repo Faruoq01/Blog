@@ -378,13 +378,6 @@ const header = {
     borderRight: 'none'
 }
 
-const social = {
-    height:'30px', 
-    display:'flex',
-    flexDirection:'row',
-    justifyContent:'flex-end',
-}
-
 const main = {
     width:'100%',
     height:'100%', 
@@ -412,15 +405,6 @@ const buttons = {
         backgroundColor: 'red',
         color: '#fff'
     },
-}
-
-const recentPage = {
-    margin:'10px', 
-    paddingBottom:'5px', 
-    border:'1px solid #ccc',
-    borderLeft:'none',
-    borderTop:'none',
-    borderRight:'none'
 }
 
 const sideBar = {
