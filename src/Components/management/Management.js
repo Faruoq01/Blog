@@ -1,12 +1,12 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
-import HomeIcon from '@mui/icons-material/Home';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import SettingsIcon from '@mui/icons-material/Settings';
+import ArticleIcon from '@mui/icons-material/Article';
+import CommentIcon from '@mui/icons-material/Comment';
 import PermContactCalendarIcon from '@mui/icons-material/PermContactCalendar';
-import PaidIcon from '@mui/icons-material/Paid';
-import CollectionsIcon from '@mui/icons-material/Collections';
-import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
-import MyLocationIcon from '@mui/icons-material/MyLocation';
+import ContactMailIcon from '@mui/icons-material/ContactMail';
 import user from '../../assests/user.png';
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import Setup from '../management/Setup';
@@ -23,23 +23,23 @@ const Management = () => {
                 <Box sx={container}>
                     <Box sx={{width:'80px', position:'fixed', height:'100vh', bgcolor:'#07a3b2'}}>
                         <Stack sx={icons} direction="column" spacing={4}>
-                            <Link style={link} to='/'>
-                                <HomeIcon sx={{width:'35px', height:'35px', color:'white', marginTop:'20px'}}/>
+                            <Link style={link} to='/management'>
+                                <DashboardIcon sx={{width:'35px', height:'35px', color:'white', marginTop:'20px'}}/>
                             </Link>
                             <Link style={link} to='/management/setup'>
-                                <PermContactCalendarIcon sx={{width:'30px', height:'45px', color:'white', marginTop:'20px'}}/>
+                                <SettingsIcon sx={{width:'30px', height:'45px', color:'white', marginTop:'20px'}}/>
                             </Link>
                             <Link style={link} to='/management/articles'>
-                                <PaidIcon sx={{width:'30px', height:'30px', color:'white', marginTop:'20px'}}/>
+                                <ArticleIcon sx={{width:'30px', height:'30px', color:'white', marginTop:'20px'}}/>
                             </Link>
                             <Link style={link} to='/management/comments'>
-                                <CollectionsIcon sx={{width:'30px', height:'35px', color:'white', marginTop:'20px'}}/>
+                                <CommentIcon sx={{width:'30px', height:'35px', color:'white', marginTop:'20px'}}/>
                             </Link>
                             <Link style={link} to='/management/contacts'>
-                                <MeetingRoomIcon sx={{width:'30px', height:'35px', color:'white', marginTop:'20px'}}/>
+                                <PermContactCalendarIcon sx={{width:'30px', height:'35px', color:'white', marginTop:'20px'}}/>
                             </Link>
                             <Link style={link} to='/management/mail-list'>
-                                <MyLocationIcon sx={{width:'30px', height:'35px', color:'white', marginTop:'20px'}}/>
+                                <ContactMailIcon sx={{width:'30px', height:'35px', color:'white', marginTop:'20px'}}/>
                             </Link>
                         </Stack>  
                         <Box sx={{height:'10vh', display:'flex', justifyContent:'center', alignItems:'center'}}>
@@ -50,7 +50,7 @@ const Management = () => {
                     </Box>
                 
                     <Switch>
-                        <Route exact path='/' component={Dashboard}/>
+                        <Route exact path='/management' component={Dashboard}/>
                         <Route  path='/management/setup' component={Setup}/>
                         <Route  path='/management/articles' component={Articles}/>
                         <Route  path='/management/comments' component={Comments}/>

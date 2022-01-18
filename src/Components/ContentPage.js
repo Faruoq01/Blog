@@ -21,6 +21,8 @@ import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import MenuIcon from '@mui/icons-material/Menu';
+import './Home.scss';
+import Stack from '@mui/material/Stack';
 
 const ContentPage = ({history}) => {
     const [anchorEl, setAnchorEl] = React.useState(false);
@@ -235,6 +237,28 @@ const ContentPage = ({history}) => {
                                     </IconButton>
                                 </CardActions>
                             </Card>
+                            <Box sx={{...reply, marginBottom:'20px', display:'flex', flexDirection:'column', alignItems:'center'}}>
+                                <Box sx={{...recentHeader, width:'94%'}}>
+                                    <Typography sx={{
+                                        fontSize:'14px', 
+                                        fontWeight:'bold', 
+                                        color:'#000'}} variant="subtitle1" component="div">
+                                        Leave a reply
+                                    </Typography>
+                                </Box>
+                                <Box sx={textArea}>
+                                    <textarea id="textArea" placeholder={'Comment'} style={replyText} />
+                                    <Stack sx={{width:'94%', height:'40px', marginBottom:'30px', marginTop:'20px'}} direction="row" spacing={2}>
+                                        <input placeholder={'Name'} style={inputText} />
+                                        <input placeholder={'Email'} style={inputText} />
+                                    </Stack>
+                                </Box>
+                                <Box sx={{width:'94%'}}>
+                                    <Button onClick={backToList} sx={{width:'170px', marginBottom:'30px', fontSize:'11px', height:'40px', color:'#fff', borderRadius:'50px', bgcolor:'green'}} size="small" color="primary">
+                                        Post Comments
+                                    </Button>
+                                </Box>
+                            </Box>
                         </Box>
                         <Box sx={matches?sideBar2:sideBar}>
                             <Box sx={{bgcolor:'#fff', paddingLeft:'20px', paddingRight:'20px', height:'270px', borderRadius:'5px'}}>
@@ -407,6 +431,12 @@ const buttons = {
     },
 }
 
+const reply = {
+    width:'100%', 
+    bgcolor:'#fff',
+    borderRadius:'5px', 
+}
+
 const sideBar = {
     width:'28%', 
     borderRadius:'5px', 
@@ -443,6 +473,31 @@ const cardContainer1 = {
 
 const cardContainer2 = {
     width:'100%', 
+}
+
+const textArea = {
+    width:'100%',
+    display:'flex',
+    flexDirection:'column',
+    alignItems:'center',
+}
+
+const replyText = {
+    width:'94%',
+    height:'200px',
+    border:'none',
+    backgroundColor:'#f7f7f7',
+    marginTop:'25px',
+    borderRadius:'5px',
+    padding:'10px',
+}
+
+const inputText = {
+    flex:1,
+    border:'none',
+    backgroundColor:'#f7f7f7',
+    paddingLeft:'10px',
+    borderRadius:'5px'
 }
 
 export default ContentPage;
