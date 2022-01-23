@@ -8,13 +8,8 @@ import refresh from '../../assests/refresh.png';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled } from '@mui/material/styles';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
 import TipTap from '../../tiptap/tiptap';
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import MenuIcon from '@mui/icons-material/Menu';
@@ -22,6 +17,8 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -142,32 +139,111 @@ const Articles = (props) => {
                     </div>
                     {closeArticle?
                         <TipTap />:
-                        <TableContainer component={Paper}>
-                            <Table sx={{ minWidth: 700, marginTop:'30px', marginBottom:'30px', }} aria-label="customized table">
-                                <TableHead>
-                                <TableRow>
-                                    <StyledTableCell>Dessert (100g serving)</StyledTableCell>
-                                    <StyledTableCell align="right">Calories</StyledTableCell>
-                                    <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
-                                    <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
-                                    <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell>
-                                </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                {rows.map((row) => (
-                                    <StyledTableRow key={row.name}>
-                                    <StyledTableCell component="th" scope="row">
-                                        {row.name}
-                                    </StyledTableCell>
-                                    <StyledTableCell align="right">{row.calories}</StyledTableCell>
-                                    <StyledTableCell align="right">{row.fat}</StyledTableCell>
-                                    <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-                                    <StyledTableCell align="right">{row.protein}</StyledTableCell>
-                                    </StyledTableRow>
-                                ))}
-                                </TableBody>
-                            </Table>
-                        </TableContainer>
+                        <Box sx={{width:'100%', marginTop:'30px'}}>
+                            <Box sx={tableHeader}>
+                                <Box sx={{width:'25%'}}>
+                                    <Typography sx={{marginLeft:'10px',fontWeight:'bold',fontSize:'14px', color:'#fff'}} variant="subtitle1" component="div">
+                                        Title
+                                    </Typography>
+                                </Box>
+                                <Box sx={{width:'15%'}}>
+                                    <Typography sx={{fontWeight:'bold',fontSize:'14px', color:'#fff'}} variant="subtitle1" component="div">
+                                        Category
+                                    </Typography>
+                                </Box>
+                                <Box sx={{width:'20%'}}>
+                                    <Typography sx={{fontWeight:'bold',fontSize:'14px', color:'#fff'}} variant="subtitle1" component="div">
+                                        Image
+                                    </Typography>
+                                </Box>
+                                <Box sx={{width:'15%'}}>
+                                    <Typography sx={{fontWeight:'bold',fontSize:'14px', color:'#fff'}} variant="subtitle1" component="div">
+                                        Created
+                                    </Typography>
+                                </Box>
+                                <Box sx={{width:'15%'}}>
+                                    <Typography sx={{fontWeight:'bold',fontSize:'14px', color:'#fff'}} variant="subtitle1" component="div">
+                                        Modified
+                                    </Typography>
+                                </Box>
+                                <Box sx={{width:'10%'}}>
+                                    <Typography sx={{marginRight:'10px',fontSize:'14px', color:'#fff'}} variant="subtitle1" component="div">
+                                        Actions
+                                    </Typography>
+                                </Box>
+                            </Box>
+                            <Box sx={tableRow}>
+                                <Box sx={{width:'25%'}}>
+                                    <Typography sx={{marginLeft:'10px', fontSize:'14px', color:'#000'}} variant="subtitle1" component="div">
+                                        Learn Python Programming
+                                    </Typography>
+                                </Box>
+                                <Box sx={{width:'15%'}}>
+                                    <Typography sx={{fontSize:'14px', color:'#000'}} variant="subtitle1" component="div">
+                                        Category
+                                    </Typography>
+                                </Box>
+                                <Box sx={{width:'20%'}}>
+                                    <Typography sx={{fontSize:'14px', color:'#000'}} variant="subtitle1" component="div">
+                                        Image
+                                    </Typography>
+                                </Box>
+                                <Box sx={{width:'15%'}}>
+                                    <Typography sx={{fontSize:'14px', color:'#000'}} variant="subtitle1" component="div">
+                                        Created
+                                    </Typography>
+                                </Box>
+                                <Box sx={{width:'15%'}}>
+                                    <Typography sx={{fontSize:'14px', color:'#000'}} variant="subtitle1" component="div">
+                                        Modified
+                                    </Typography>
+                                </Box>
+                                <Box sx={{width:'10%'}}>
+                                    <IconButton aria-label="share">
+                                        <EditIcon sx={{color:'green'}} />
+                                    </IconButton>
+                                    <IconButton aria-label="share">
+                                        <DeleteForeverIcon sx={{color:'red'}} />
+                                    </IconButton>
+                                </Box>
+                            </Box>
+                            <Box sx={tableRow}>
+                                <Box sx={{width:'25%'}}>
+                                    <Typography sx={{marginLeft:'10px', fontSize:'14px', color:'#000'}} variant="subtitle1" component="div">
+                                        Learn Python Programming
+                                    </Typography>
+                                </Box>
+                                <Box sx={{width:'15%'}}>
+                                    <Typography sx={{fontSize:'14px', color:'#000'}} variant="subtitle1" component="div">
+                                        Category
+                                    </Typography>
+                                </Box>
+                                <Box sx={{width:'20%'}}>
+                                    <Typography sx={{fontSize:'14px', color:'#000'}} variant="subtitle1" component="div">
+                                        Image
+                                    </Typography>
+                                </Box>
+                                <Box sx={{width:'15%'}}>
+                                    <Typography sx={{fontSize:'14px', color:'#000'}} variant="subtitle1" component="div">
+                                        Created
+                                    </Typography>
+                                </Box>
+                                <Box sx={{width:'15%'}}>
+                                    <Typography sx={{fontSize:'14px', color:'#000'}} variant="subtitle1" component="div">
+                                        Modified
+                                    </Typography>
+                                </Box>
+                                <Box sx={{width:'10%'}}>
+                                    <IconButton aria-label="share">
+                                        <EditIcon sx={{color:'green'}} />
+                                    </IconButton>
+                                    <IconButton aria-label="share">
+                                        <DeleteForeverIcon sx={{color:'red'}} />
+                                    </IconButton>
+                                </Box>
+                            </Box>
+                            <Box sx={{width:'100%', height:'50px', bgcolor:'#fff', borderBottomLeftRadius:'5px', borderBottomRightRadius:'5px'}}></Box>
+                        </Box>
                     }
                 </Box>
             </Box>
@@ -262,6 +338,30 @@ const button = {
         backgroundColor: '#1d445b',
         color: '#fff'
     },
+}
+
+const tableHeader = {
+    width:'100%', 
+    height:'50px', 
+    bgcolor:'#222222',
+    display:'flex',
+    flexDirection:'row',
+    justifyContent:'space-between',
+    alignItems:'center',
+}
+
+const tableRow = {
+    width:'100%', 
+    height:'50px', 
+    bgcolor:'#fff',
+    display:'flex',
+    flexDirection:'row',
+    justifyContent:'space-between',
+    alignItems:'center',
+    border:'1px solid #ccc',
+    borderLeft:'transparent',
+    borderRight:'transparent',
+    borderTop:'transparent'
 }
 
 export default Articles;
