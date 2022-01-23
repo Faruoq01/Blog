@@ -37,6 +37,7 @@
         background-color: #3e4957;
         outline: none;
         border: 0px;
+        margin-top: 5px;
         
         #reload{
             width: 15px;
@@ -62,6 +63,7 @@
         border: 0px;
         font-weight: 600;
         font-size: 12px;
+        margin-top: 5px;
     }
 
     #refresh-button2:hover{
@@ -78,7 +80,7 @@
 @media screen and (max-width: 1050px){
     #table-caption2{
         #search-container{
-            width: 70%;
+            width: 60%;
         }
     }
 }
@@ -104,4 +106,14 @@ button{
     width: 200px;
     background-color: #000;
     color: #fff
+}
+
+#editor-pane{
+    height: 500px;
+    overflow: scroll;
+    border: 1px solid #ccc;
+}
+
+#editor-pane:focus{
+    border:'none'
 }
