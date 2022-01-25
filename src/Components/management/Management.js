@@ -18,22 +18,14 @@ import Dashboard from '../management/Dashboard';
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const Management = () => {
-    const [menus, setMenus] = useState(false);
     const matches = useMediaQuery("(max-width:900px)");
-    useEffect(()=>{
-        if(matches){
-            setMenus(false)
-        }else{
-            setMenus(true)
-        }
-        
-    }, [matches])
+    const [menus, setMenus] = useState(matches);
     return(
         <React.Fragment>
             <Router>
                 <Box sx={container}>
-                    {menus&&
-                        <Box sx={{width:'80px', position:'fixed', height:'100vh', bgcolor:'#07a3b2'}}>
+                    {!matches&&
+                        <Box sx={{width:'80px', position:'fixed', height:'100vh', bgcolor:'#1d445b'}}>
                             <Stack sx={icons} direction="column" spacing={4}>
                                 <Link style={link} to='/management'>
                                     <DashboardIcon sx={{width:'35px', height:'35px', color:'white', marginTop:'20px'}}/>
@@ -92,7 +84,8 @@ const container = {
     height:'100vh', 
     display:'flex',
     flexDirection:'row',
-    padding:"0px"
+    padding:"0px",
+    bgcolor:'#1d445b'
 }
 
 const icons = {

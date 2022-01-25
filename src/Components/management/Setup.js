@@ -88,10 +88,7 @@ const Setup = ({history}) => {
                         <Typography sx={{fontWeight:'bold', color:'#000'}} variant="h6" component="div">
                             Profile
                         </Typography>
-                        {!closeArticle?
-                            <Button sx={button} onClick={createArticle} variant="contained">New Article</Button>:
-                            <Button sx={button} onClick={closeEditor} variant="contained">Close Editor</Button>
-                        }
+                        <Button></Button>
                     </Stack>
                     <Box sx={{width:'100%'}}>
                         <Stack ml={1} mr={1} sx={{width:'98%', height:'40px', marginBottom:'10px', marginTop:'30px'}} direction="row" spacing={2}>
@@ -104,11 +101,43 @@ const Setup = ({history}) => {
                         </Stack>
                         <Stack ml={1} mr={1} sx={{width:'98%', height:'40px', marginBottom:'10px', marginTop:'10px'}} direction="row" spacing={2}>
                             <input placeholder={'Profile picture'} style={inputText} />
-                            <input placeholder={'Interst'} style={inputText} />
+                            <input placeholder={'Interest'} style={inputText} />
                         </Stack>
                         <Stack ml={1} mr={1} sx={{width:'98%', height:'40px', marginBottom:'10px', marginTop:'10px'}} direction="row" spacing={2}>
                             <input placeholder={'Email'} style={inputText} />
                         </Stack>
+                        <Box sx={{width:'100%', display:'flex', justifyContent:'flex-end'}}>
+                            <Button sx={button} onClick={createArticle} variant="contained">Update profile</Button>
+                        </Box>
+                    </Box>
+                </Box>
+
+                <Box sx={matches?section3:section}>
+                    <Stack sx={stack} direction="row">
+                        <Typography sx={{fontWeight:'bold', color:'#000'}} variant="h6" component="div">
+                            Categories
+                        </Typography>
+                        <Button></Button>
+                    </Stack>
+                    <Box sx={{width:'100%'}}>
+                        <Stack ml={1} mr={1} sx={{width:'98%', height:'40px', marginBottom:'10px', marginTop:'30px'}} direction="row" spacing={2}>
+                            <input placeholder={'Category one'} style={inputText} />
+                        </Stack>
+                        <Stack ml={1} mr={1} sx={{width:'98%', height:'40px', marginBottom:'10px', marginTop:'10px'}} direction="row" spacing={2}>
+                            <input placeholder={'Category Two'} style={inputText} />
+                        </Stack>
+                        <Stack ml={1} mr={1} sx={{width:'98%', height:'40px', marginBottom:'10px', marginTop:'10px'}} direction="row" spacing={2}>
+                            <input placeholder={'Category Three'} style={inputText} />
+                        </Stack>
+                        <Stack ml={1} mr={1} sx={{width:'98%', height:'40px', marginBottom:'10px', marginTop:'10px'}} direction="row" spacing={2}>
+                            <input placeholder={'Category Four'} style={inputText} />
+                        </Stack>
+                        <Stack ml={1} mr={1} sx={{width:'98%', height:'40px', marginBottom:'10px', marginTop:'10px'}} direction="row" spacing={2}>
+                            <input placeholder={'Category Five'} style={inputText} />
+                        </Stack>
+                        <Box sx={{width:'100%', display:'flex', justifyContent:'flex-end'}}>
+                            <Button sx={button} onClick={createArticle} variant="contained">Update Category</Button>
+                        </Box>
                     </Box>
                 </Box>
             </Box>
@@ -129,7 +158,8 @@ const container2 = {
     marginLeft:'0px', 
     display:'flex', 
     flexDirection:'column', 
-    alignItems:'center'
+    alignItems:'center',
+    marginBottom:'60px'
 }
 
 const header = {
@@ -187,6 +217,17 @@ const section2 = {
     alignItems:'center',
 }
 
+const section3 = {
+    width:'98%',
+    marginTop:'20px',
+    borderRadius:'5px', 
+    bgcolor:'#fff',
+    display:'flex',
+    flexDirection:'column',
+    alignItems:'center',
+    marginBottom:'60px'
+}
+
 const stack = {
     width:'96%',
     display:'flex', 
@@ -199,34 +240,13 @@ const button = {
     fontSize:'12px', 
     bgcolor:'#1d445b',
     fontSize:'11px',
+    marginTop:'30px',
+    marginBottom:'20px',
     '&:hover': {
         backgroundColor: '#1d445b',
         color: '#fff'
     },
-}
-
-const tableHeader = {
-    width:'100%', 
-    height:'50px', 
-    bgcolor:'#222222',
-    display:'flex',
-    flexDirection:'row',
-    justifyContent:'space-between',
-    alignItems:'center',
-}
-
-const tableRow = {
-    width:'100%', 
-    height:'50px', 
-    bgcolor:'#fff',
-    display:'flex',
-    flexDirection:'row',
-    justifyContent:'space-between',
-    alignItems:'center',
-    border:'1px solid #ccc',
-    borderLeft:'transparent',
-    borderRight:'transparent',
-    borderTop:'transparent'
+    marginRight:'20px'
 }
 
 const inputText = {

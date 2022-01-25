@@ -15,6 +15,10 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import { DataGrid } from '@mui/x-data-grid';
+import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import MailIcon from '@mui/icons-material/Mail';
 
 const columns = [
     { field: 'id', headerName: 'ID', width: 70 },
@@ -34,6 +38,7 @@ const columns = [
 const Articles = ({history}) => {
     const [closeArticle, setCloseArticle] = useState(false);
     const [anchorEl, setAnchorEl] = React.useState(false);
+    const anchor = 'bottom';
     const matches = useMediaQuery("(max-width:900px)");
     const createArticle = () => {
         setCloseArticle(true);
@@ -44,59 +49,72 @@ const Articles = ({history}) => {
     const closeMenu = () => {
         setAnchorEl(!anchorEl)
     }
+
+    const [state, setState] = React.useState({
+        top: false,
+        left: false,
+        bottom: false,
+        right: false,
+      });
+    
+      const toggleDrawer = (anchor, open) => (event) => {
+        if (
+          event &&
+          event.type === 'keydown' &&
+          (event.key === 'Tab' || event.key === 'Shift')
+        ) {
+          return;
+        }
+    
+        setState({ ...state, [anchor]: open });
+      };
+    
+      const list = (anchor) => (
+        <Box
+          sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+          role="presentation"
+          onClick={toggleDrawer(anchor, false)}
+          onKeyDown={toggleDrawer(anchor, false)}
+        >
+          <List>
+            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+              <ListItem button key={text}>
+                <ListItemIcon>
+                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItem>
+            ))}
+          </List>
+          <Divider />
+          <List>
+            {['All mail', 'Trash', 'Spam'].map((text, index) => (
+              <ListItem button key={text}>
+                <ListItemIcon>
+                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItem>
+            ))}
+          </List>
+        </Box>
+      );
     return(
         <React.Fragment>
             <Box sx={matches?container2:container}>
                 <Box sx={matches?header2:header}>
                     {matches&&<IconButton aria-label="share">
-                        <MenuIcon onClick={closeMenu} sx={{width:'30px', height:'30px', color:'#fff'}} />
+                        <MenuIcon onClick={toggleDrawer(anchor, true)} sx={{width:'30px', height:'30px', color:'#fff'}} />
                     </IconButton>}
-                    {anchorEl&&
-                        <Box sx={{width:'200px', boxShadow:'0px 0px 8px #000', borderRadius:'10px', position:'absolute', marginLeft:'5px', marginTop:'290px', bgcolor:'#fff'}}>
-                            <List sx={{ width: '100%', fontSize:'12px', padding:'0px', marginTop:'20px'}}>
-                                <ListItem sx={{marginLeft:'10px',marginTop:'10px', padding:'0px'}} alignItems="flex-start">
-                                    <ListItemText
-                                        sx={{fontSize:'12px'}}
-                                        primary="Profile"
-                                        onClick={()=>{history.push('/login')}}
-                                    />
-                                </ListItem>
-                                <Divider />
-                                <ListItem sx={{marginLeft:'10px',marginTop:'10px', padding:'0px'}} alignItems="flex-start">
-                                    <ListItemText
-                                        sx={{fontSize:'12px'}}
-                                        primary="Dashboard"
-                                        onClick={()=>{history.push('/management/articles')}}
-                                    />
-                                </ListItem>
-                                <Divider />
-                                <ListItem sx={{marginLeft:'10px',marginTop:'10px', padding:'0px'}} alignItems="flex-start">
-                                    <ListItemText
-                                        sx={{fontSize:'12px'}}
-                                        primary="Article"
-                                        onClick={()=>{history.push('/management/comments')}}
-                                    />
-                                </ListItem>
-                                <Divider />
-                                <ListItem sx={{marginLeft:'10px',marginTop:'10px', padding:'0px'}} alignItems="flex-start">
-                                    <ListItemText
-                                        sx={{fontSize:'12px'}}
-                                        primary="Comments"
-                                    />
-                                </ListItem>
-                                <Divider />
-                                <ListItem sx={{marginLeft:'10px',marginTop:'10px', padding:'0px'}} alignItems="flex-start">
-                                    <ListItemText
-                                        sx={{fontSize:'12px'}}
-                                        primary="Contacts"
-                                    />
-                                </ListItem>
-                                <Divider />
-                            </List>
-                        </Box>
-                    }
+                    <SwipeableDrawer
+                        anchor={anchor}
+                        open={state[anchor]}
+                        onClose={toggleDrawer(anchor, false)}
+                        onOpen={toggleDrawer(anchor, true)}>
+                        {list(anchor)}
+                    </SwipeableDrawer>
                     <Typography sx={matches?headerText2:headerText} variant="h5" component="div">
-                        Photography
+                        Articles
                     </Typography>
                 </Box>
                 <Box sx={matches?section2:section}>
