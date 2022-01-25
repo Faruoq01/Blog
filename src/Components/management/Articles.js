@@ -7,9 +7,6 @@ import './styles.scss';
 import refresh from '../../assests/refresh.png';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
-import { styled } from '@mui/material/styles';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-import TableRow from '@mui/material/TableRow';
 import TipTap from '../../tiptap/tiptap';
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import MenuIcon from '@mui/icons-material/Menu';
@@ -17,8 +14,22 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { DataGrid } from '@mui/x-data-grid';
+
+const columns = [
+    { field: 'id', headerName: 'ID', width: 70 },
+    { field: 'title', headerName: 'Title', width: 250 },
+    { field: 'category', headerName: 'Category', width: 200 },
+    { field: 'image', headerName: 'Image', width: 200 },
+    { field: 'created', headerName: 'Created', width: 200 },
+    { field: 'modified', headerName: 'Modified', width: 200 },
+  ];
+  
+  const rows = [
+    { id:'1', title: 'Learn python programming', category: 'Programming', image: 'dog.png', created: '35/12/23', modified:'35/12/23' },
+    { id:'2', title: 'Learn python programming', category: 'Programming', image: 'dog.png', created: '35/12/23', modified:'35/12/23' },
+    { id:'3', title: 'Learn python programming', category: 'Programming', image: 'dog.png', created: '35/12/23', modified:'35/12/23' },
+  ];
 
 const Articles = ({history}) => {
     const [closeArticle, setCloseArticle] = useState(false);
@@ -110,111 +121,16 @@ const Articles = ({history}) => {
                     </div>
                     {closeArticle?
                         <TipTap />:
-                        <Box sx={{width:'100%', marginTop:'30px'}}>
-                            <Box sx={tableHeader}>
-                                <Box sx={{width:'25%'}}>
-                                    <Typography sx={{marginLeft:'10px',fontWeight:'bold',fontSize:'14px', color:'#fff'}} variant="subtitle1" component="div">
-                                        Title
-                                    </Typography>
-                                </Box>
-                                <Box sx={{width:'15%'}}>
-                                    <Typography sx={{fontWeight:'bold',fontSize:'14px', color:'#fff'}} variant="subtitle1" component="div">
-                                        Category
-                                    </Typography>
-                                </Box>
-                                <Box sx={{width:'20%'}}>
-                                    <Typography sx={{fontWeight:'bold',fontSize:'14px', color:'#fff'}} variant="subtitle1" component="div">
-                                        Image
-                                    </Typography>
-                                </Box>
-                                <Box sx={{width:'15%'}}>
-                                    <Typography sx={{fontWeight:'bold',fontSize:'14px', color:'#fff'}} variant="subtitle1" component="div">
-                                        Created
-                                    </Typography>
-                                </Box>
-                                <Box sx={{width:'15%'}}>
-                                    <Typography sx={{fontWeight:'bold',fontSize:'14px', color:'#fff'}} variant="subtitle1" component="div">
-                                        Modified
-                                    </Typography>
-                                </Box>
-                                <Box sx={{width:'10%'}}>
-                                    <Typography sx={{marginRight:'10px',fontSize:'14px', color:'#fff'}} variant="subtitle1" component="div">
-                                        Actions
-                                    </Typography>
-                                </Box>
-                            </Box>
-                            <Box sx={tableRow}>
-                                <Box sx={{width:'25%'}}>
-                                    <Typography sx={{marginLeft:'10px', fontSize:'14px', color:'#000'}} variant="subtitle1" component="div">
-                                        Learn Python Programming
-                                    </Typography>
-                                </Box>
-                                <Box sx={{width:'15%'}}>
-                                    <Typography sx={{fontSize:'14px', color:'#000'}} variant="subtitle1" component="div">
-                                        Category
-                                    </Typography>
-                                </Box>
-                                <Box sx={{width:'20%'}}>
-                                    <Typography sx={{fontSize:'14px', color:'#000'}} variant="subtitle1" component="div">
-                                        Image
-                                    </Typography>
-                                </Box>
-                                <Box sx={{width:'15%'}}>
-                                    <Typography sx={{fontSize:'14px', color:'#000'}} variant="subtitle1" component="div">
-                                        Created
-                                    </Typography>
-                                </Box>
-                                <Box sx={{width:'15%'}}>
-                                    <Typography sx={{fontSize:'14px', color:'#000'}} variant="subtitle1" component="div">
-                                        Modified
-                                    </Typography>
-                                </Box>
-                                <Box sx={{width:'10%'}}>
-                                    <IconButton aria-label="share">
-                                        <EditIcon sx={{color:'green'}} />
-                                    </IconButton>
-                                    <IconButton aria-label="share">
-                                        <DeleteForeverIcon sx={{color:'red'}} />
-                                    </IconButton>
-                                </Box>
-                            </Box>
-                            <Box sx={tableRow}>
-                                <Box sx={{width:'25%'}}>
-                                    <Typography sx={{marginLeft:'10px', fontSize:'14px', color:'#000'}} variant="subtitle1" component="div">
-                                        Learn Python Programming
-                                    </Typography>
-                                </Box>
-                                <Box sx={{width:'15%'}}>
-                                    <Typography sx={{fontSize:'14px', color:'#000'}} variant="subtitle1" component="div">
-                                        Category
-                                    </Typography>
-                                </Box>
-                                <Box sx={{width:'20%'}}>
-                                    <Typography sx={{fontSize:'14px', color:'#000'}} variant="subtitle1" component="div">
-                                        Image
-                                    </Typography>
-                                </Box>
-                                <Box sx={{width:'15%'}}>
-                                    <Typography sx={{fontSize:'14px', color:'#000'}} variant="subtitle1" component="div">
-                                        Created
-                                    </Typography>
-                                </Box>
-                                <Box sx={{width:'15%'}}>
-                                    <Typography sx={{fontSize:'14px', color:'#000'}} variant="subtitle1" component="div">
-                                        Modified
-                                    </Typography>
-                                </Box>
-                                <Box sx={{width:'10%'}}>
-                                    <IconButton aria-label="share">
-                                        <EditIcon sx={{color:'green'}} />
-                                    </IconButton>
-                                    <IconButton aria-label="share">
-                                        <DeleteForeverIcon sx={{color:'red'}} />
-                                    </IconButton>
-                                </Box>
-                            </Box>
-                            <Box sx={{width:'100%', height:'50px', bgcolor:'#fff', borderBottomLeftRadius:'5px', borderBottomRightRadius:'5px'}}></Box>
-                        </Box>
+                        <div style={{width:'100%', marginTop:'30px'}}>
+                            <DataGrid
+                                rows={rows}
+                                columns={columns}
+                                pageSize={5}
+                                rowsPerPageOptions={[5]}
+                                checkboxSelection
+                                autoHeight
+                            />
+                        </div>
                     }
                 </Box>
             </Box>
@@ -223,7 +139,7 @@ const Articles = ({history}) => {
 }
 
 const container = {
-    width:"100%", 
+    width:"92%", 
     marginLeft:'78px', 
     display:'flex', 
     flexDirection:'column', 
@@ -231,7 +147,7 @@ const container = {
 }
 
 const container2 = {
-    width:"100%", 
+    width:"98%", 
     marginLeft:'0px', 
     display:'flex', 
     flexDirection:'column', 
