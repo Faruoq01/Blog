@@ -66,19 +66,19 @@ const Management = () => {
                         <Route exact path='/management'>
                             <Dashboard menu={setMenus} />
                         </Route>
-                        <Route exact path='/management/setup'>
+                        <Route path='/management/setup'>
                             <Setup />
                         </Route>
-                        <Route exact path='/management/articles'>
+                        <Route path='/management/articles'>
                             <Articles />
                         </Route>
-                        <Route exact path='/management/comments'>
+                        <Route path='/management/comments'>
                             <Comments />
                         </Route>
-                        <Route exact path='/management/contacts'>
+                        <Route path='/management/contacts'>
                             <Contacts />
                         </Route>
-                        <Route exact path='/management/mail-list'>
+                        <Route path='/management/mail-list'>
                             <MailList />
                         </Route>
                     </Switch>
