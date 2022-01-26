@@ -20,7 +20,7 @@ function App() {
           <Route path='/forgot-password' component={ForgotPassword}/>
           <Route path='/account' component={Account}/>
 
-          <Route  exact path='/' component={Management}/>
+          <Route  exact path='/management' component={Management}/>
           <Route  path='/setup' component={Management}/>
           <Route  path='/articles' component={Management}/>
           <Route  path='/comments' component={Management}/>

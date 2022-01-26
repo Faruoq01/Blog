@@ -27,7 +27,7 @@ const Management = ({history}) => {
     const anchor = 'bottom';
 
     const goToDashboard = ()=>{
-        history.push('/');
+        history.push('/management');
         window.location.reload();
     }
     const goToSetup = ()=>{
@@ -143,7 +143,7 @@ const Management = ({history}) => {
                     {!matches&&
                         <Box sx={{width:'80px', position:'fixed', height:'100vh', bgcolor:'#1d445b'}}>
                             <Stack sx={icons} direction="column" spacing={4}>
-                                <Link style={link} to='/'>
+                                <Link style={link} to='/management'>
                                     <DashboardIcon sx={{width:'35px', height:'35px', color:'white', marginTop:'20px'}}/>
                                 </Link>
                                 <Link style={link} to='/setup'>
@@ -177,7 +177,7 @@ const Management = ({history}) => {
                         {list(anchor)}
                     </SwipeableDrawer>
                     <Switch>
-                        <Route exact path='/'>
+                        <Route exact path='/management'>
                             <Dashboard toggleDrawer={toggleDrawer(anchor, true)}/>
                         </Route>
                         <Route path='/setup'>
