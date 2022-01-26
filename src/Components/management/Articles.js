@@ -65,7 +65,7 @@ const Articles = (props) => {
                         <div id='search-container'>
                             <IconButton aria-label="share">
                                 <SearchIcon />
-                            </IconButton>}
+                            </IconButton>
                             <input type="text" placeholder={'Filter or search by name'} />
                         </div>
                         <button id='refresh-button'><img id='reload' src={refresh} alt='icon' /></button>
