@@ -10,10 +10,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import TipTap from '../../tiptap/tiptap';
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import MenuIcon from '@mui/icons-material/Menu';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import Divider from '@mui/material/Divider';
 import { DataGrid } from '@mui/x-data-grid';
 
 const columns = [
@@ -33,16 +29,12 @@ const columns = [
 
 const Contacts = (props) => {
     const [closeArticle, setCloseArticle] = useState(false);
-    const [anchorEl, setAnchorEl] = React.useState(false);
     const matches = useMediaQuery("(max-width:900px)");
     const createArticle = () => {
         setCloseArticle(true);
     }
     const closeEditor = () => {
         setCloseArticle(false);
-    }
-    const closeMenu = () => {
-        setAnchorEl(!anchorEl)
     }
     const drawer = () => {
         props.toggleDrawer();
@@ -71,9 +63,9 @@ const Contacts = (props) => {
                     </Stack>
                     <div id='table-caption2'>
                         <div id='search-container'>
-                            {!anchorEl&&<IconButton aria-label="share">
+                            <IconButton aria-label="share">
                                 <SearchIcon />
-                            </IconButton>}
+                            </IconButton>
                             <input type="text" placeholder={'Filter or search by name'} />
                         </div>
                         <button id='refresh-button'><img id='reload' src={refresh} alt='icon' /></button>
@@ -177,38 +169,13 @@ const stack = {
     marginTop:'20px'
 }
 
-const button = {
-    fontSize:'12px', 
+const button = { 
     bgcolor:'#1d445b',
     fontSize:'11px',
     '&:hover': {
         backgroundColor: '#1d445b',
         color: '#fff'
     },
-}
-
-const tableHeader = {
-    width:'100%', 
-    height:'50px', 
-    bgcolor:'#222222',
-    display:'flex',
-    flexDirection:'row',
-    justifyContent:'space-between',
-    alignItems:'center',
-}
-
-const tableRow = {
-    width:'100%', 
-    height:'50px', 
-    bgcolor:'#fff',
-    display:'flex',
-    flexDirection:'row',
-    justifyContent:'space-between',
-    alignItems:'center',
-    border:'1px solid #ccc',
-    borderLeft:'transparent',
-    borderRight:'transparent',
-    borderTop:'transparent'
 }
 
 export default Contacts;

@@ -1,29 +1,15 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import './styles.scss';
-import refresh from '../../assests/refresh.png';
 import IconButton from '@mui/material/IconButton';
-import SearchIcon from '@mui/icons-material/Search';
-import TipTap from '../../tiptap/tiptap';
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import MenuIcon from '@mui/icons-material/Menu';
 
 const Setup = (props) => {
-    const [closeArticle, setCloseArticle] = useState(false);
-    const [anchorEl, setAnchorEl] = React.useState(false);
     const matches = useMediaQuery("(max-width:900px)");
-    const createArticle = () => {
-        setCloseArticle(true);
-    }
-    const closeEditor = () => {
-        setCloseArticle(false);
-    }
-    const closeMenu = () => {
-        setAnchorEl(!anchorEl)
-    }
     const drawer = () => {
         props.toggleDrawer();
     }
@@ -63,7 +49,7 @@ const Setup = (props) => {
                             <input placeholder={'Email'} style={inputText} />
                         </Stack>
                         <Box sx={{width:'100%', display:'flex', justifyContent:'flex-end'}}>
-                            <Button sx={button} onClick={createArticle} variant="contained">Update profile</Button>
+                            <Button sx={button} variant="contained">Update profile</Button>
                         </Box>
                     </Box>
                 </Box>
@@ -92,7 +78,7 @@ const Setup = (props) => {
                             <input placeholder={'Category Five'} style={inputText} />
                         </Stack>
                         <Box sx={{width:'100%', display:'flex', justifyContent:'flex-end'}}>
-                            <Button sx={button} onClick={createArticle} variant="contained">Update Category</Button>
+                            <Button sx={button} variant="contained">Update Category</Button>
                         </Box>
                     </Box>
                 </Box>
@@ -124,7 +110,7 @@ const Setup = (props) => {
                             <input placeholder={'Pinterest'} style={inputText} />
                         </Stack>
                         <Box sx={{width:'100%', display:'flex', justifyContent:'flex-end'}}>
-                            <Button sx={button} onClick={createArticle} variant="contained">Update Social Media</Button>
+                            <Button sx={button} variant="contained">Update Social Media</Button>
                         </Box>
                     </Box>
                 </Box>
@@ -224,7 +210,6 @@ const stack = {
 }
 
 const button = {
-    fontSize:'12px', 
     bgcolor:'#1d445b',
     fontSize:'11px',
     marginTop:'30px',

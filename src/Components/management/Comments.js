@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
@@ -7,13 +7,8 @@ import './styles.scss';
 import refresh from '../../assests/refresh.png';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
-import TipTap from '../../tiptap/tiptap';
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import MenuIcon from '@mui/icons-material/Menu';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import Divider from '@mui/material/Divider';
 import { DataGrid } from '@mui/x-data-grid';
 
 const columns = [
@@ -32,18 +27,7 @@ const columns = [
   ];
 
 const Comments = (props) => {
-    const [closeArticle, setCloseArticle] = useState(false);
-    const [anchorEl, setAnchorEl] = React.useState(false);
     const matches = useMediaQuery("(max-width:900px)");
-    const createArticle = () => {
-        setCloseArticle(true);
-    }
-    const closeEditor = () => {
-        setCloseArticle(false);
-    }
-    const closeMenu = () => {
-        setAnchorEl(!anchorEl)
-    }
     const drawer = () => {
         props.toggleDrawer();
     }
@@ -64,34 +48,28 @@ const Comments = (props) => {
                         <Typography sx={{fontWeight:'bold', color:'#000'}} variant="h6" component="div">
                             List of comments
                         </Typography>
-                        {!closeArticle?
-                            <Button sx={button} onClick={createArticle} variant="contained">New Article</Button>:
-                            <Button sx={button} onClick={closeEditor} variant="contained">Close Editor</Button>
-                        }
+                        <Button></Button>
                     </Stack>
                     <div id='table-caption2'>
                         <div id='search-container'>
-                            {!anchorEl&&<IconButton aria-label="share">
+                            <IconButton aria-label="share">
                                 <SearchIcon />
-                            </IconButton>}
+                            </IconButton>
                             <input type="text" placeholder={'Filter or search by name'} />
                         </div>
                         <button id='refresh-button'><img id='reload' src={refresh} alt='icon' /></button>
                         <button id='refresh-button2'>Search</button>
                     </div>
-                    {closeArticle?
-                        <TipTap />:
-                        <div style={{width:'100%', marginTop:'30px'}}>
-                            <DataGrid
-                                rows={rows}
-                                columns={columns}
-                                pageSize={5}
-                                rowsPerPageOptions={[5]}
-                                checkboxSelection
-                                autoHeight
-                            />
-                        </div>
-                    }
+                    <div style={{width:'100%', marginTop:'30px'}}>
+                        <DataGrid
+                            rows={rows}
+                            columns={columns}
+                            pageSize={5}
+                            rowsPerPageOptions={[5]}
+                            checkboxSelection
+                            autoHeight
+                        />
+                    </div>
                 </Box>
             </Box>
         </React.Fragment>
@@ -175,40 +153,6 @@ const stack = {
     justifyContent:'space-between', 
     alignItems:'center',
     marginTop:'20px'
-}
-
-const button = {
-    fontSize:'12px', 
-    bgcolor:'#1d445b',
-    fontSize:'11px',
-    '&:hover': {
-        backgroundColor: '#1d445b',
-        color: '#fff'
-    },
-}
-
-const tableHeader = {
-    width:'100%', 
-    height:'50px', 
-    bgcolor:'#222222',
-    display:'flex',
-    flexDirection:'row',
-    justifyContent:'space-between',
-    alignItems:'center',
-}
-
-const tableRow = {
-    width:'100%', 
-    height:'50px', 
-    bgcolor:'#fff',
-    display:'flex',
-    flexDirection:'row',
-    justifyContent:'space-between',
-    alignItems:'center',
-    border:'1px solid #ccc',
-    borderLeft:'transparent',
-    borderRight:'transparent',
-    borderTop:'transparent'
 }
 
 export default Comments;

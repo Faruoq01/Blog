@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import DashboardIcon from '@mui/icons-material/Dashboard';
@@ -24,7 +24,6 @@ import Divider from '@mui/material/Divider';
 
 const Management = ({history}) => {
     const matches = useMediaQuery("(max-width:900px)");
-    const [menus, setMenus] = useState(matches);
     const anchor = 'bottom';
 
     const goToDashboard = ()=>{
