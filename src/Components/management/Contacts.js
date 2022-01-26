@@ -31,7 +31,7 @@ const columns = [
     { id:'3', title: 'Learn python programming', category: 'Programming', image: 'dog.png', created: '35/12/23', modified:'35/12/23' },
   ];
 
-const Contacts = ({history}) => {
+const Contacts = (props) => {
     const [closeArticle, setCloseArticle] = useState(false);
     const [anchorEl, setAnchorEl] = React.useState(false);
     const matches = useMediaQuery("(max-width:900px)");
@@ -44,57 +44,17 @@ const Contacts = ({history}) => {
     const closeMenu = () => {
         setAnchorEl(!anchorEl)
     }
+    const drawer = () => {
+        props.toggleDrawer();
+    }
     return(
         <React.Fragment>
             <Box sx={matches?container2:container}>
                 <Box sx={matches?header2:header}>
                     {matches&&<IconButton aria-label="share">
-                        <MenuIcon onClick={closeMenu} sx={{width:'30px', height:'30px', color:'#fff'}} />
+                        <MenuIcon onClick={drawer} sx={{width:'30px', height:'30px', color:'#fff'}} />
                     </IconButton>}
-                    {anchorEl&&
-                        <Box sx={{width:'200px', boxShadow:'0px 0px 8px #000', borderRadius:'10px', position:'absolute', marginLeft:'5px', marginTop:'290px', bgcolor:'#fff'}}>
-                            <List sx={{ width: '100%', fontSize:'12px', padding:'0px', marginTop:'20px'}}>
-                                <ListItem sx={{marginLeft:'10px',marginTop:'10px', padding:'0px'}} alignItems="flex-start">
-                                    <ListItemText
-                                        sx={{fontSize:'12px'}}
-                                        primary="Profile"
-                                        onClick={()=>{history.push('/login')}}
-                                    />
-                                </ListItem>
-                                <Divider />
-                                <ListItem sx={{marginLeft:'10px',marginTop:'10px', padding:'0px'}} alignItems="flex-start">
-                                    <ListItemText
-                                        sx={{fontSize:'12px'}}
-                                        primary="Dashboard"
-                                        onClick={()=>{history.push('/management/articles')}}
-                                    />
-                                </ListItem>
-                                <Divider />
-                                <ListItem sx={{marginLeft:'10px',marginTop:'10px', padding:'0px'}} alignItems="flex-start">
-                                    <ListItemText
-                                        sx={{fontSize:'12px'}}
-                                        primary="Article"
-                                        onClick={()=>{history.push('/management/comments')}}
-                                    />
-                                </ListItem>
-                                <Divider />
-                                <ListItem sx={{marginLeft:'10px',marginTop:'10px', padding:'0px'}} alignItems="flex-start">
-                                    <ListItemText
-                                        sx={{fontSize:'12px'}}
-                                        primary="Comments"
-                                    />
-                                </ListItem>
-                                <Divider />
-                                <ListItem sx={{marginLeft:'10px',marginTop:'10px', padding:'0px'}} alignItems="flex-start">
-                                    <ListItemText
-                                        sx={{fontSize:'12px'}}
-                                        primary="Contacts"
-                                    />
-                                </ListItem>
-                                <Divider />
-                            </List>
-                        </Box>
-                    }
+
                     <Typography sx={matches?headerText2:headerText} variant="h5" component="div">
                         Contacts
                     </Typography>

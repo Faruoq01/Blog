@@ -10,12 +10,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import TipTap from '../../tiptap/tiptap';
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import MenuIcon from '@mui/icons-material/Menu';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import Divider from '@mui/material/Divider';
 
-const Setup = ({history}) => {
+const Setup = (props) => {
     const [closeArticle, setCloseArticle] = useState(false);
     const [anchorEl, setAnchorEl] = React.useState(false);
     const matches = useMediaQuery("(max-width:900px)");
@@ -28,57 +24,17 @@ const Setup = ({history}) => {
     const closeMenu = () => {
         setAnchorEl(!anchorEl)
     }
+    const drawer = () => {
+        props.toggleDrawer();
+    }
     return(
         <React.Fragment>
             <Box sx={matches?container2:container}>
                 <Box sx={matches?header2:header}>
                     {matches&&<IconButton aria-label="share">
-                        <MenuIcon onClick={closeMenu} sx={{width:'30px', height:'30px', color:'#fff'}} />
+                        <MenuIcon onClick={drawer} sx={{width:'30px', height:'30px', color:'#fff'}} />
                     </IconButton>}
-                    {anchorEl&&
-                        <Box sx={{width:'200px', boxShadow:'0px 0px 8px #000', borderRadius:'10px', position:'absolute', marginLeft:'5px', marginTop:'290px', bgcolor:'#fff'}}>
-                            <List sx={{ width: '100%', fontSize:'12px', padding:'0px', marginTop:'20px'}}>
-                                <ListItem sx={{marginLeft:'10px',marginTop:'10px', padding:'0px'}} alignItems="flex-start">
-                                    <ListItemText
-                                        sx={{fontSize:'12px'}}
-                                        primary="Profile"
-                                        onClick={()=>{history.push('/login')}}
-                                    />
-                                </ListItem>
-                                <Divider />
-                                <ListItem sx={{marginLeft:'10px',marginTop:'10px', padding:'0px'}} alignItems="flex-start">
-                                    <ListItemText
-                                        sx={{fontSize:'12px'}}
-                                        primary="Dashboard"
-                                        onClick={()=>{history.push('/management/articles')}}
-                                    />
-                                </ListItem>
-                                <Divider />
-                                <ListItem sx={{marginLeft:'10px',marginTop:'10px', padding:'0px'}} alignItems="flex-start">
-                                    <ListItemText
-                                        sx={{fontSize:'12px'}}
-                                        primary="Article"
-                                        onClick={()=>{history.push('/management/comments')}}
-                                    />
-                                </ListItem>
-                                <Divider />
-                                <ListItem sx={{marginLeft:'10px',marginTop:'10px', padding:'0px'}} alignItems="flex-start">
-                                    <ListItemText
-                                        sx={{fontSize:'12px'}}
-                                        primary="Comments"
-                                    />
-                                </ListItem>
-                                <Divider />
-                                <ListItem sx={{marginLeft:'10px',marginTop:'10px', padding:'0px'}} alignItems="flex-start">
-                                    <ListItemText
-                                        sx={{fontSize:'12px'}}
-                                        primary="Contacts"
-                                    />
-                                </ListItem>
-                                <Divider />
-                            </List>
-                        </Box>
-                    }
+                    
                     <Typography sx={matches?headerText2:headerText} variant="h5" component="div">
                         Configuration Setup
                     </Typography>
@@ -137,6 +93,38 @@ const Setup = ({history}) => {
                         </Stack>
                         <Box sx={{width:'100%', display:'flex', justifyContent:'flex-end'}}>
                             <Button sx={button} onClick={createArticle} variant="contained">Update Category</Button>
+                        </Box>
+                    </Box>
+                </Box>
+
+                <Box sx={matches?section3:section}>
+                    <Stack sx={stack} direction="row">
+                        <Typography sx={{fontWeight:'bold', color:'#000'}} variant="h6" component="div">
+                            Social
+                        </Typography>
+                        <Button></Button>
+                    </Stack>
+                    <Box sx={{width:'100%'}}>
+                        <Stack ml={1} mr={1} sx={{width:'98%', height:'40px', marginBottom:'10px', marginTop:'30px'}} direction="row" spacing={2}>
+                            <input placeholder={'Facebook'} style={inputText} />
+                        </Stack>
+                        <Stack ml={1} mr={1} sx={{width:'98%', height:'40px', marginBottom:'10px', marginTop:'10px'}} direction="row" spacing={2}>
+                            <input placeholder={'Twitter'} style={inputText} />
+                        </Stack>
+                        <Stack ml={1} mr={1} sx={{width:'98%', height:'40px', marginBottom:'10px', marginTop:'10px'}} direction="row" spacing={2}>
+                            <input placeholder={'Instagram'} style={inputText} />
+                        </Stack>
+                        <Stack ml={1} mr={1} sx={{width:'98%', height:'40px', marginBottom:'10px', marginTop:'10px'}} direction="row" spacing={2}>
+                            <input placeholder={'TikTok'} style={inputText} />
+                        </Stack>
+                        <Stack ml={1} mr={1} sx={{width:'98%', height:'40px', marginBottom:'10px', marginTop:'10px'}} direction="row" spacing={2}>
+                            <input placeholder={'LinkedIn'} style={inputText} />
+                        </Stack>
+                        <Stack ml={1} mr={1} sx={{width:'98%', height:'40px', marginBottom:'10px', marginTop:'10px'}} direction="row" spacing={2}>
+                            <input placeholder={'Pinterest'} style={inputText} />
+                        </Stack>
+                        <Box sx={{width:'100%', display:'flex', justifyContent:'flex-end'}}>
+                            <Button sx={button} onClick={createArticle} variant="contained">Update Social Media</Button>
                         </Box>
                     </Box>
                 </Box>
@@ -225,7 +213,6 @@ const section3 = {
     display:'flex',
     flexDirection:'column',
     alignItems:'center',
-    marginBottom:'60px'
 }
 
 const stack = {

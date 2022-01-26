@@ -16,10 +16,127 @@ import Contacts from '../management/Contacts';
 import MailList from '../management/MailList';
 import Dashboard from '../management/Dashboard';
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import Divider from '@mui/material/Divider';
 
-const Management = () => {
+const Management = ({history}) => {
     const matches = useMediaQuery("(max-width:900px)");
     const [menus, setMenus] = useState(matches);
+    const anchor = 'bottom';
+
+    const goToDashboard = ()=>{
+        history.push('/');
+        window.location.reload();
+    }
+    const goToSetup = ()=>{
+        history.push('/setup');
+        window.location.reload();
+    }
+    const goToArticles = ()=>{
+        history.push('/articles');
+        window.location.reload();
+    }
+    const goToComments = ()=>{
+        history.push('/comments');
+        window.location.reload();
+    }
+    const goToContacts = ()=>{
+        history.push('/contacts');
+        window.location.reload();
+    }
+    const goToMailList = ()=>{
+        history.push('/mail-list');
+        window.location.reload();
+    }
+
+    const [state, setState] = React.useState({
+        top: false,
+        left: false,
+        bottom: false,
+        right: false,
+      });
+    
+      const toggleDrawer = (anchor, open) => (event) => {
+        if (
+          event &&
+          event.type === 'keydown' &&
+          (event.key === 'Tab' || event.key === 'Shift')
+        ) {
+          return;
+        }
+    
+        setState({ ...state, [anchor]: open });
+      };
+    
+      const list = (anchor) => (
+        <Box
+          sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+          role="presentation"
+          onClick={toggleDrawer(anchor, false)}
+          onKeyDown={toggleDrawer(anchor, false)}
+        >
+            <List>
+                <ListItem sx={{margin:'0px',marginTop:'10px', padding:'0px', display:'flex', alignItems:'center'}} alignItems="flex-start">
+                    <DashboardIcon sx={{width:'20px', height:'20px', color:'#000',marginLeft:'5px', marginBottom:'2px'}}/>
+                    <ListItemText
+                        sx={{fontSize:'12px', marginLeft:'8px'}}
+                        primary="Dashboard"
+                        onClick={goToDashboard}
+                    />
+                </ListItem>
+                <Divider />
+                <ListItem sx={{margin:'0px',marginTop:'10px', padding:'0px', display:'flex', alignItems:'center'}} alignItems="flex-start">
+                    <SettingsIcon sx={{width:'20px', height:'20px', color:'#000',marginLeft:'5px', marginBottom:'2px'}}/>
+                    <ListItemText
+                        sx={{fontSize:'12px', marginLeft:'8px'}}
+                        primary="Setup"
+                        onClick={goToSetup}
+                    />
+                </ListItem>
+                <Divider />
+                <ListItem sx={{margin:'0px',marginTop:'10px', padding:'0px', display:'flex', alignItems:'center'}} alignItems="flex-start">
+                    <ArticleIcon sx={{width:'20px', height:'20px', color:'#000',marginLeft:'5px', marginBottom:'2px'}}/>
+                    <ListItemText
+                        sx={{fontSize:'12px', marginLeft:'8px'}}
+                        primary="Articles"
+                        onClick={goToArticles}
+                    />
+                </ListItem>
+                <Divider />
+                <ListItem sx={{margin:'0px',marginTop:'10px', padding:'0px', display:'flex', alignItems:'center'}} alignItems="flex-start">
+                    <CommentIcon sx={{width:'20px', height:'20px', color:'#000',marginLeft:'5px', marginBottom:'2px'}}/>
+                    <ListItemText
+                        sx={{fontSize:'12px', marginLeft:'8px'}}
+                        primary="Comments"
+                        onClick={goToComments}
+                    />
+                </ListItem>
+                <Divider />
+                <ListItem sx={{margin:'0px',marginTop:'10px', padding:'0px', display:'flex', alignItems:'center'}} alignItems="flex-start">
+                    <PermContactCalendarIcon sx={{width:'20px', height:'20px', color:'#000',marginLeft:'5px', marginBottom:'2px'}}/>
+                    <ListItemText
+                        sx={{fontSize:'12px', marginLeft:'8px'}}
+                        primary="Contacts"
+                        onClick={goToContacts}
+                    />
+                </ListItem>
+                <Divider />
+                <ListItem sx={{margin:'0px',marginTop:'10px', padding:'0px', display:'flex', alignItems:'center'}} alignItems="flex-start">
+                    <ContactMailIcon sx={{width:'20px', height:'20px', color:'#000',marginLeft:'5px', marginBottom:'2px'}}/>
+                    <ListItemText
+                        sx={{fontSize:'12px', marginLeft:'8px'}}
+                        primary="Mail List"
+                        onClick={goToMailList}
+                    />
+                </ListItem>
+                <Divider />
+            </List>
+        </Box>
+      );
+
     return(
         <React.Fragment>
             <Router>
@@ -27,22 +144,22 @@ const Management = () => {
                     {!matches&&
                         <Box sx={{width:'80px', position:'fixed', height:'100vh', bgcolor:'#1d445b'}}>
                             <Stack sx={icons} direction="column" spacing={4}>
-                                <Link style={link} to='/management'>
+                                <Link style={link} to='/'>
                                     <DashboardIcon sx={{width:'35px', height:'35px', color:'white', marginTop:'20px'}}/>
                                 </Link>
-                                <Link style={link} to='/management/setup'>
+                                <Link style={link} to='/setup'>
                                     <SettingsIcon sx={{width:'30px', height:'45px', color:'white', marginTop:'20px'}}/>
                                 </Link>
-                                <Link style={link} to='/management/articles'>
+                                <Link style={link} to='/articles'>
                                     <ArticleIcon sx={{width:'30px', height:'30px', color:'white', marginTop:'20px'}}/>
                                 </Link>
-                                <Link style={link} to='/management/comments'>
+                                <Link style={link} to='/comments'>
                                     <CommentIcon sx={{width:'30px', height:'35px', color:'white', marginTop:'20px'}}/>
                                 </Link>
-                                <Link style={link} to='/management/contacts'>
+                                <Link style={link} to='/contacts'>
                                     <PermContactCalendarIcon sx={{width:'30px', height:'35px', color:'white', marginTop:'20px'}}/>
                                 </Link>
-                                <Link style={link} to='/management/mail-list'>
+                                <Link style={link} to='/mail-list'>
                                     <ContactMailIcon sx={{width:'30px', height:'35px', color:'white', marginTop:'20px'}}/>
                                 </Link>
                             </Stack>  
@@ -53,25 +170,31 @@ const Management = () => {
                             </Box>
                         </Box>
                     }
-                
+                    <SwipeableDrawer
+                        anchor={anchor}
+                        open={state[anchor]}
+                        onClose={toggleDrawer(anchor, false)}
+                        onOpen={toggleDrawer(anchor, true)}>
+                        {list(anchor)}
+                    </SwipeableDrawer>
                     <Switch>
-                        <Route exact path='/management'>
-                            <Dashboard menu={setMenus} />
+                        <Route exact path='/'>
+                            <Dashboard toggleDrawer={toggleDrawer(anchor, true)}/>
                         </Route>
-                        <Route path='/management/setup'>
-                            <Setup />
+                        <Route path='/setup'>
+                            <Setup toggleDrawer={toggleDrawer(anchor, true)}/>
                         </Route>
-                        <Route path='/management/articles'>
-                            <Articles />
+                        <Route path='/articles'>
+                            <Articles toggleDrawer={toggleDrawer(anchor, true)} />
                         </Route>
-                        <Route path='/management/comments'>
-                            <Comments />
+                        <Route path='/comments'>
+                            <Comments toggleDrawer={toggleDrawer(anchor, true)}/>
                         </Route>
-                        <Route path='/management/contacts'>
-                            <Contacts />
+                        <Route path='/contacts'>
+                            <Contacts toggleDrawer={toggleDrawer(anchor, true)}/>
                         </Route>
-                        <Route path='/management/mail-list'>
-                            <MailList />
+                        <Route path='/mail-list'>
+                            <MailList toggleDrawer={toggleDrawer(anchor, true)}/>
                         </Route>
                     </Switch>
                 </Box>

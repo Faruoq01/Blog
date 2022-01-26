@@ -21,11 +21,11 @@ function App() {
           <Route path='/account' component={Account}/>
 
           <Route  exact path='/' component={Management}/>
-          <Route  path='/management/setup' component={Management}/>
-          <Route  path='/management/articles' component={Management}/>
-          <Route  path='/management/comments' component={Management}/>
-          <Route  path='/management/contacts' component={Management}/>
-          <Route  path='/management/mail-list' component={Management}/>
+          <Route  path='/setup' component={Management}/>
+          <Route  path='/articles' component={Management}/>
+          <Route  path='/comments' component={Management}/>
+          <Route  path='/contacts' component={Management}/>
+          <Route  path='/mail-list' component={Management}/>
           <Route render = {() => <h1>404 page not found</h1>} />
         </Switch>
       </div>

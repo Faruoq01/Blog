@@ -10,15 +10,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import TipTap from '../../tiptap/tiptap';
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import MenuIcon from '@mui/icons-material/Menu';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import Divider from '@mui/material/Divider';
 import { DataGrid } from '@mui/x-data-grid';
-import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 
 const columns = [
     { field: 'id', headerName: 'ID', width: 70 },
@@ -35,10 +27,9 @@ const columns = [
     { id:'3', title: 'Learn python programming', category: 'Programming', image: 'dog.png', created: '35/12/23', modified:'35/12/23' },
   ];
 
-const Articles = ({history}) => {
+const Articles = (props) => {
     const [closeArticle, setCloseArticle] = useState(false);
     const [anchorEl, setAnchorEl] = React.useState(false);
-    const anchor = 'bottom';
     const matches = useMediaQuery("(max-width:900px)");
     const createArticle = () => {
         setCloseArticle(true);
@@ -49,70 +40,17 @@ const Articles = ({history}) => {
     const closeMenu = () => {
         setAnchorEl(!anchorEl)
     }
-
-    const [state, setState] = React.useState({
-        top: false,
-        left: false,
-        bottom: false,
-        right: false,
-      });
-    
-      const toggleDrawer = (anchor, open) => (event) => {
-        if (
-          event &&
-          event.type === 'keydown' &&
-          (event.key === 'Tab' || event.key === 'Shift')
-        ) {
-          return;
-        }
-    
-        setState({ ...state, [anchor]: open });
-      };
-    
-      const list = (anchor) => (
-        <Box
-          sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
-          role="presentation"
-          onClick={toggleDrawer(anchor, false)}
-          onKeyDown={toggleDrawer(anchor, false)}
-        >
-          <List>
-            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
-          </List>
-          <Divider />
-          <List>
-            {['All mail', 'Trash', 'Spam'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
-          </List>
-        </Box>
-      );
+    const drawer = () => {
+        props.toggleDrawer();
+    }
     return(
         <React.Fragment>
             <Box sx={matches?container2:container}>
                 <Box sx={matches?header2:header}>
                     {matches&&<IconButton aria-label="share">
-                        <MenuIcon onClick={toggleDrawer(anchor, true)} sx={{width:'30px', height:'30px', color:'#fff'}} />
+                        <MenuIcon onClick={drawer} sx={{width:'30px', height:'30px', color:'#fff'}} />
                     </IconButton>}
-                    <SwipeableDrawer
-                        anchor={anchor}
-                        open={state[anchor]}
-                        onClose={toggleDrawer(anchor, false)}
-                        onOpen={toggleDrawer(anchor, true)}>
-                        {list(anchor)}
-                    </SwipeableDrawer>
+                    
                     <Typography sx={matches?headerText2:headerText} variant="h5" component="div">
                         Articles
                     </Typography>
