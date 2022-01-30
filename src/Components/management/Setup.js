@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
@@ -7,12 +7,17 @@ import './styles.scss';
 import IconButton from '@mui/material/IconButton';
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import MenuIcon from '@mui/icons-material/Menu';
+import { useSelector } from 'react-redux';
 
 const Setup = (props) => {
     const matches = useMediaQuery("(max-width:900px)");
+    const profile = useSelector(state => state.authReducer.user);
     const drawer = () => {
         props.toggleDrawer();
     }
+    useEffect(()=>{
+        console.log(profile)
+    },[])
     return(
         <React.Fragment>
             <Box sx={matches?container2:container}>
@@ -34,19 +39,20 @@ const Setup = (props) => {
                     </Stack>
                     <Box sx={{width:'100%'}}>
                         <Stack ml={1} mr={1} sx={{width:'98%', height:'40px', marginBottom:'10px', marginTop:'30px'}} direction="row" spacing={2}>
-                            <input placeholder={'First Name'} style={inputText} />
-                            <input placeholder={'Last Name'} style={inputText} />
+                            <input value={profile.firstname} placeholder={'First Name'} style={inputText} />
+                            <input value={profile.lastname} placeholder={'Last Name'} style={inputText} />
                         </Stack>
                         <Stack ml={1} mr={1} sx={{width:'98%', height:'40px', marginBottom:'10px', marginTop:'10px'}} direction="row" spacing={2}>
-                            <input placeholder={'Middle Name'} style={inputText} />
-                            <input placeholder={'Occupation'} style={inputText} />
+                            <input value={profile.middlename} placeholder={'Middle Name'} style={inputText} />
+                            <input value={profile.occupation} placeholder={'Occupation'} style={inputText} />
                         </Stack>
                         <Stack ml={1} mr={1} sx={{width:'98%', height:'40px', marginBottom:'10px', marginTop:'10px'}} direction="row" spacing={2}>
-                            <input placeholder={'Profile picture'} style={inputText} />
-                            <input placeholder={'Interest'} style={inputText} />
+                            <input value={profile.profileImage} placeholder={'Profile picture'} style={inputText} />
+                            <input value={profile.interest} placeholder={'Interest'} style={inputText} />
                         </Stack>
                         <Stack ml={1} mr={1} sx={{width:'98%', height:'40px', marginBottom:'10px', marginTop:'10px'}} direction="row" spacing={2}>
-                            <input placeholder={'Email'} style={inputText} />
+                            <input value={profile.email} placeholder={'Email'} style={inputText} />
+                            <input placeholder={'Password'} style={inputText} />
                         </Stack>
                         <Box sx={{width:'100%', display:'flex', justifyContent:'flex-end'}}>
                             <Button sx={button} variant="contained">Update profile</Button>

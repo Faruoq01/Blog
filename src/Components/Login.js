@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -6,16 +6,24 @@ import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
+import { useDispatch } from 'react-redux';
+import { login } from '../store/actions/auth';
 
 const Login = ({history}) => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const matches = useMediaQuery("(max-width:600px)");
+    const dispatch = useDispatch();
     const loginToHome = () => {
-        history.push('/management')
+        dispatch(login({ email, password }, history)).then(() => {
+            //setLoading(false);
+        })
+        //history.push('/management')
     }
     return(
         <div style={{width:'100vw', height:'100vh'}}>
             <Box sx={container} fixed>
-                    <Box sx={matches?login2:login}>
+                    <Box sx={matches?login2:loginStyle}>
                         <Typography sx={{marginBottom:'20px'}} variant="h6" gutterBottom component="div">
                             Sign in
                         </Typography>
@@ -26,6 +34,7 @@ const Login = ({history}) => {
                                 type="text"
                                 size="small"
                                 sx={inputs}
+                                onChange={(text) => setEmail(text.target.value)}
                             />
                             <TextField
                                 id="outlined-number"
@@ -33,8 +42,9 @@ const Login = ({history}) => {
                                 type="password"
                                 size="small"
                                 sx={inputs}
+                                onChange={(text) => setPassword(text.target.value)}
                             />
-                            <Button onClick={loginToHome} variant="contained">Sign in</Button>
+                            <Button onClick={(e) => loginToHome(e, "clicked")} variant="contained">Sign in</Button>
                             <Stack sx={{width:'100%', display:'flex', justifyContent:'space-between'}} direction="row">
                                 <Link
                                     component="button"
@@ -71,7 +81,7 @@ const container = {
     alignItems:'center'
 }
 
-const login = {
+const loginStyle = {
     width:'500px', 
     height:'60vh', 
     bgcolor:'#fff',
