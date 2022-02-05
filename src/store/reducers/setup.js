@@ -1,4 +1,5 @@
 import { 
+    GET_PROFILE,
     GET_CATEGORIES, 
     GET_SOCIAL, 
     UPDATE_CATEGORIES,
@@ -18,7 +19,7 @@ const setupReducer = (state = initialState, action) => {
         case UPDATE_PROFILE:{
             return {
                 ...state,
-                profile: payload.user,
+                profile: payload.profile,
                 categories: state.categories,
                 social: state.social
             }
@@ -37,6 +38,14 @@ const setupReducer = (state = initialState, action) => {
                 profile: state.profile,
                 categories: state.categories,
                 social: payload.social
+            }
+        }
+        case GET_PROFILE:{
+            return {
+                ...state,
+                profile: payload.profile,
+                categories: state.categories,
+                social: state.social
             }
         }
         case GET_CATEGORIES:{

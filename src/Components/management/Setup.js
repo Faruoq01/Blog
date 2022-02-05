@@ -11,13 +11,21 @@ import { useSelector } from 'react-redux';
 
 const Setup = (props) => {
     const matches = useMediaQuery("(max-width:900px)");
-    const profile = useSelector(state => state.authReducer.user);
+    const profile = useSelector(state => state.setupReducer.profile);
+    const categories = useSelector(state => state.setupReducer.categories);
+    const social = useSelector(state => state.setupReducer.social);
     const drawer = () => {
         props.toggleDrawer();
     }
-    useEffect(()=>{
-        console.log(profile)
-    },[])
+    const updateProfile = () => {
+
+    }
+    const updateCategories = () => {
+        
+    }
+    const updateSocial = () => {
+        
+    }
     return(
         <React.Fragment>
             <Box sx={matches?container2:container}>
@@ -39,23 +47,23 @@ const Setup = (props) => {
                     </Stack>
                     <Box sx={{width:'100%'}}>
                         <Stack ml={1} mr={1} sx={{width:'98%', height:'40px', marginBottom:'10px', marginTop:'30px'}} direction="row" spacing={2}>
-                            <input value={profile.firstname} placeholder={'First Name'} style={inputText} />
-                            <input value={profile.lastname} placeholder={'Last Name'} style={inputText} />
+                            <input value={profile[0].firstname} placeholder={'First Name'} style={inputText} required />
+                            <input value={profile[0].lastname} placeholder={'Last Name'} style={inputText} required />
                         </Stack>
                         <Stack ml={1} mr={1} sx={{width:'98%', height:'40px', marginBottom:'10px', marginTop:'10px'}} direction="row" spacing={2}>
-                            <input value={profile.middlename} placeholder={'Middle Name'} style={inputText} />
-                            <input value={profile.occupation} placeholder={'Occupation'} style={inputText} />
+                            <input value={profile[0].middlename} placeholder={'Middle Name'} style={inputText} required />
+                            <input value={profile[0].occupation} placeholder={'Occupation'} style={inputText} required />
                         </Stack>
                         <Stack ml={1} mr={1} sx={{width:'98%', height:'40px', marginBottom:'10px', marginTop:'10px'}} direction="row" spacing={2}>
-                            <input value={profile.profileImage} placeholder={'Profile picture'} style={inputText} />
-                            <input value={profile.interest} placeholder={'Interest'} style={inputText} />
+                            <input value={profile[0].profileImage} placeholder={'Profile picture'} style={inputText} required />
+                            <input value={profile[0].interest} placeholder={'Interest'} style={inputText} required />
                         </Stack>
                         <Stack ml={1} mr={1} sx={{width:'98%', height:'40px', marginBottom:'10px', marginTop:'10px'}} direction="row" spacing={2}>
-                            <input value={profile.email} placeholder={'Email'} style={inputText} />
-                            <input placeholder={'Password'} style={inputText} />
+                            <input value={profile[0].email} placeholder={'Email'} style={inputText} required />
+                            <input placeholder={'Password'} style={inputText} required />
                         </Stack>
                         <Box sx={{width:'100%', display:'flex', justifyContent:'flex-end'}}>
-                            <Button sx={button} variant="contained">Update profile</Button>
+                            <Button onClick={(e) => updateProfile(e, "clicked")} sx={button} variant="contained">Update profile</Button>
                         </Box>
                     </Box>
                 </Box>
@@ -69,22 +77,22 @@ const Setup = (props) => {
                     </Stack>
                     <Box sx={{width:'100%'}}>
                         <Stack ml={1} mr={1} sx={{width:'98%', height:'40px', marginBottom:'10px', marginTop:'30px'}} direction="row" spacing={2}>
-                            <input placeholder={'Category one'} style={inputText} />
+                            <input value={categories[0].first} placeholder={'Category one'} style={inputText} required />
                         </Stack>
                         <Stack ml={1} mr={1} sx={{width:'98%', height:'40px', marginBottom:'10px', marginTop:'10px'}} direction="row" spacing={2}>
-                            <input placeholder={'Category Two'} style={inputText} />
+                            <input value={categories[0].second} placeholder={'Category Two'} style={inputText} required />
                         </Stack>
                         <Stack ml={1} mr={1} sx={{width:'98%', height:'40px', marginBottom:'10px', marginTop:'10px'}} direction="row" spacing={2}>
-                            <input placeholder={'Category Three'} style={inputText} />
+                            <input value={categories[0].third} placeholder={'Category Three'} style={inputText} required />
                         </Stack>
                         <Stack ml={1} mr={1} sx={{width:'98%', height:'40px', marginBottom:'10px', marginTop:'10px'}} direction="row" spacing={2}>
-                            <input placeholder={'Category Four'} style={inputText} />
+                            <input value={categories[0].fourth} placeholder={'Category Four'} style={inputText} required />
                         </Stack>
                         <Stack ml={1} mr={1} sx={{width:'98%', height:'40px', marginBottom:'10px', marginTop:'10px'}} direction="row" spacing={2}>
-                            <input placeholder={'Category Five'} style={inputText} />
+                            <input value={categories[0].fifth} placeholder={'Category Five'} style={inputText} required />
                         </Stack>
                         <Box sx={{width:'100%', display:'flex', justifyContent:'flex-end'}}>
-                            <Button sx={button} variant="contained">Update Category</Button>
+                            <Button onClick={(e) => updateCategories(e, "clicked")} sx={button} variant="contained">Update Category</Button>
                         </Box>
                     </Box>
                 </Box>
@@ -98,25 +106,25 @@ const Setup = (props) => {
                     </Stack>
                     <Box sx={{width:'100%'}}>
                         <Stack ml={1} mr={1} sx={{width:'98%', height:'40px', marginBottom:'10px', marginTop:'30px'}} direction="row" spacing={2}>
-                            <input placeholder={'Facebook'} style={inputText} />
+                            <input value={social[0].facebook} placeholder={'Facebook'} style={inputText} required />
                         </Stack>
                         <Stack ml={1} mr={1} sx={{width:'98%', height:'40px', marginBottom:'10px', marginTop:'10px'}} direction="row" spacing={2}>
-                            <input placeholder={'Twitter'} style={inputText} />
+                            <input value={social[0].twitter} placeholder={'Twitter'} style={inputText} required />
                         </Stack>
                         <Stack ml={1} mr={1} sx={{width:'98%', height:'40px', marginBottom:'10px', marginTop:'10px'}} direction="row" spacing={2}>
-                            <input placeholder={'Instagram'} style={inputText} />
+                            <input value={social[0].instagram} placeholder={'Instagram'} style={inputText} required />
                         </Stack>
                         <Stack ml={1} mr={1} sx={{width:'98%', height:'40px', marginBottom:'10px', marginTop:'10px'}} direction="row" spacing={2}>
-                            <input placeholder={'TikTok'} style={inputText} />
+                            <input value={social[0].linkedin} placeholder={'TikTok'} style={inputText} required />
                         </Stack>
                         <Stack ml={1} mr={1} sx={{width:'98%', height:'40px', marginBottom:'10px', marginTop:'10px'}} direction="row" spacing={2}>
-                            <input placeholder={'LinkedIn'} style={inputText} />
+                            <input value={social[0].youtube} placeholder={'LinkedIn'} style={inputText} required />
                         </Stack>
                         <Stack ml={1} mr={1} sx={{width:'98%', height:'40px', marginBottom:'10px', marginTop:'10px'}} direction="row" spacing={2}>
-                            <input placeholder={'Pinterest'} style={inputText} />
+                            <input value={social[0].pinterest} placeholder={'Pinterest'} style={inputText} required />
                         </Stack>
                         <Box sx={{width:'100%', display:'flex', justifyContent:'flex-end'}}>
-                            <Button sx={button} variant="contained">Update Social Media</Button>
+                            <Button onClick={(e) => updateSocial(e, "clicked")} sx={button} variant="contained">Update Social Media</Button>
                         </Box>
                     </Box>
                 </Box>

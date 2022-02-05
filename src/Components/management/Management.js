@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import DashboardIcon from '@mui/icons-material/Dashboard';
@@ -21,10 +21,19 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
+import { getProfile, getCategories, getSocial } from '../../store/actions/setup';
+import { useDispatch } from 'react-redux';
 
 const Management = ({history}) => {
     const matches = useMediaQuery("(max-width:900px)");
+    const dispatch = useDispatch();
     const anchor = 'bottom';
+
+    useEffect(()=>{
+        dispatch(getProfile());
+        dispatch(getCategories());
+        dispatch(getSocial());
+    },[]);
 
     const goToDashboard = ()=>{
         history.push('/management');

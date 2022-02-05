@@ -3,6 +3,7 @@ import {
     UPDATE_PROFILE, 
     UPDATE_CATEGORIES, 
     UPDATE_SOCIAL,
+    GET_PROFILE,
     GET_CATEGORIES,
     GET_SOCIAL, 
 } from '../types/index';
@@ -31,16 +32,24 @@ export const updateSocial = (params) => dispatch => {
     .catch(err => {})
 }
 
-export const getCategories = (params) => dispatch => {
-    return SetupService.getCategories(params)
+export const getProfile = () => dispatch => {
+    return SetupService.getProfile()
+    .then(data => {
+        dispatch({ type: GET_PROFILE, payload: data })
+    })
+    .catch(err => {})
+}
+
+export const getCategories = () => dispatch => {
+    return SetupService.getCategories()
     .then(data => {
         dispatch({ type: GET_CATEGORIES, payload: data })
     })
     .catch(err => {})
 }
 
-export const getSocial = (params) => dispatch => {
-    return SetupService.getSocial(params)
+export const getSocial = () => dispatch => {
+    return SetupService.getSocial()
     .then(data => {
         dispatch({ type: GET_SOCIAL, payload: data })
     })

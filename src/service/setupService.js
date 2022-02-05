@@ -35,6 +35,17 @@ const SetupService = {
         })
     },
 
+    getProfile: (data) => {
+        return APIs.get('/get-profile', data)
+        .then(({ data }) => {
+            return data;
+        })
+         .catch(err => {
+            console.log("Auth service err", err);
+            throw err
+        })
+    },
+
     getCategories: (data) => {
         return APIs.get('/get-categories', data)
         .then(({ data }) => {
