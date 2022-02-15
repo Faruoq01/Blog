@@ -68,8 +68,8 @@ const ContentPage = ({history}) => {
                                 </Box>
                             </Box>:
                             <div>
-                                <IconButton aria-label="share">
-                                    <MenuIcon onClick={handleClose} sx={{width:'30px', height:'30px', color:'#fff'}} />
+                                <IconButton onClick={handleClose} aria-label="share">
+                                    <MenuIcon sx={{width:'30px', height:'30px', color:'#fff'}} />
                                 </IconButton>
                                 {anchorEl&&
                                     <Box sx={{width:'200px', zIndex:'20', borderRadius:'10px', position:'absolute', right:'30px', bgcolor:'#fff'}}>
@@ -120,7 +120,7 @@ const ContentPage = ({history}) => {
                     <Box mt={3} sx={matches?main2:main}>
                         <Box sx={matches?cardContainer2:cardContainer1}>
                             <Card sx={matches?card2:card1}>
-                                <CardActionArea>
+                                <CardActionArea sx={{display:'flex', flexDirection:'column'}}>
                                     <CardMedia
                                         component="img"
                                         height="250"
@@ -149,82 +149,72 @@ const ContentPage = ({history}) => {
                                             </Box>
                                         </Box>
                                         <Typography mt={2} variant="body2" color="text.secondary">
-                                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                                            species, ranging across all continents except Antarctica Lizards are a 
-                                            widespread group of squamate reptiles, with over 6,000 species, ranging 
-                                            across all continents except Antarctica all continents except Antarctica
-                                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                                            species, ranging across all continents except Antarctica Lizards are a 
-                                            widespread group of squamate reptiles, with over 6,000 species, ranging 
-                                            across all continents except Antarctica all continents except Antarctica
-                                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                                            species, ranging across all continents except Antarctica Lizards are a 
-                                            widespread group of squamate reptiles, with over 6,000 species, ranging 
-                                            across all continents except Antarctica all continents except Antarctica
-                                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                                            species, ranging across all continents except Antarctica Lizards are a 
-                                            widespread group of squamate reptiles, with over 6,000 species, ranging 
-                                            across all continents except Antarctica all continents except Antarctica
-                                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                                            species, ranging across all continents except Antarctica Lizards are a 
-                                            widespread group of squamate reptiles, with over 6,000 species, ranging 
-                                            across all continents except Antarctica all continents except Antarctica
-                                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                                            species, ranging across all continents except Antarctica Lizards are a 
-                                            widespread group of squamate reptiles, with over 6,000 species, ranging 
-                                            across all continents except Antarctica all continents except Antarctica
-                                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                                            species, ranging across all continents except Antarctica Lizards are a 
-                                            widespread group of squamate reptiles, with over 6,000 species, ranging 
-                                            across all continents except Antarctica all continents except Antarctica
-                                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                                            species, ranging across all continents except Antarctica Lizards are a 
-                                            widespread group of squamate reptiles, with over 6,000 species, ranging 
-                                            across all continents except Antarctica all continents except Antarctica
-                                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                                            species, ranging across all continents except Antarctica Lizards are a 
-                                            widespread group of squamate reptiles, with over 6,000 species, ranging 
-                                            across all continents except Antarctica all continents except Antarctica
-                                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                                            species, ranging across all continents except Antarctica Lizards are a 
-                                            widespread group of squamate reptiles, with over 6,000 species, ranging 
-                                            across all continents except Antarctica all continents except Antarctica
-                                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                                            species, ranging across all continents except Antarctica Lizards are a 
-                                            widespread group of squamate reptiles, with over 6,000 species, ranging 
-                                            across all continents except Antarctica all continents except Antarctica
-                                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                                            species, ranging across all continents except Antarctica Lizards are a 
-                                            widespread group of squamate reptiles, with over 6,000 species, ranging 
-                                            across all continents except Antarctica all continents except Antarctica
-                                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                                            species, ranging across all continents except Antarctica Lizards are a 
-                                            widespread group of squamate reptiles, with over 6,000 species, ranging 
-                                            across all continents except Antarctica all continents except Antarctica
-                                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                                            species, ranging across all continents except Antarctica Lizards are a 
-                                            widespread group of squamate reptiles, with over 6,000 species, ranging 
-                                            across all continents except Antarctica all continents except Antarctica
-                                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                                            species, ranging across all continents except Antarctica Lizards are a 
-                                            widespread group of squamate reptiles, with over 6,000 species, ranging 
-                                            across all continents except Antarctica all continents except Antarctica
-                                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                                            species, ranging across all continents except Antarctica Lizards are a 
-                                            widespread group of squamate reptiles, with over 6,000 species, ranging 
-                                            across all continents except Antarctica all continents except Antarctica
-                                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                                            species, ranging across all continents except Antarctica Lizards are a 
-                                            widespread group of squamate reptiles, with over 6,000 species, ranging 
-                                            across all continents except Antarctica all continents except Antarctica
-                                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                                            species, ranging across all continents except Antarctica Lizards are a 
-                                            widespread group of squamate reptiles, with over 6,000 species, ranging 
-                                            across all continents except Antarctica all continents except Antarctica
-                                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                                            species, ranging across all continents except Antarctica Lizards are a 
-                                            widespread group of squamate reptiles, with over 6,000 species, ranging 
-                                            across all continents except Antarctica all continents except Antarctica
+                                            What is Affiliate Marketing?
+
+                                            Affiliate marketing is the sum total of  processes involved in promoting another person's or company's products to earn a commission. 
+
+                                            Affiliate marketing is a PROVEN business model that has life changing benefits both online and offline.
+
+                                            It has been in existence since the 1989.
+
+                                            Affiliate marketing business is so lucrative that it made the second richest man alive RICH. It made Jeff Bezos the world’s richest man in 2018 till recently. 
+
+                                            Imagine yourself doing the SAME business as the second richest man in the world🤤
+
+
+                                            Some examples of common  affiliate marketing programs are
+
+                                            ✔️ Clickbank
+                                            ✔️ JvZoo
+                                            ✔️ Commission Junction 
+                                            ✔️ WarriorPlus
+                                            ✔️ Amazon Associates 
+                                            ✔️ Jumia Force 
+                                            ✔️ Piggyvest has a popular affiliate/referral program too.
+                                            ✔️ EXPERTNAIRE my favorite
+
+                                            Now u would Wana know why expertnaire is my favorite, this is because it has a high commission between 30-50%, and you're been paid weekly (Fridays)
+
+
+                                            Now let me tell you what Affiliate marketing is NOT:
+
+                                            ❌ It is not MLM - Multi Level Marketing 
+
+                                            ❌ You don’t need to rent a shop or office
+
+                                            ❌ You don't need to create, own or import any products
+
+                                            ❌ There are no monthly fees
+
+                                            ❌ It does not require HUGE startup capital
+
+                                            ❌ It is NOT a scam
+
+                                            ❌ It is NOT a ponzi/get rich quick and does NOT work for lazy people who want others to do the work for them.
+
+                                            Please read this part again because it needs to sink in and correct any misconceptions you may have.
+
+                                            Oya let's solve some maths! 
+
+                                            📌 Typical LIVE Example of How to Bank up N400,000 Per Month
+
+                                            Let’s assume you chose this hot product called The Profitable Facebook Ads System from
+                                            expertnaire to sell. 
+
+                                            This product sells paid to you per sale.
+
+
+                                            And the best part of it is????👇👇👇
+                                            Using the two powerful methods inside the 72IG Implementation program, you use your phone or computer to make sales. 
+
+                                            All purely online, without leaving your house.
+
+                                            You then make 8 sales per week.
+
+                                            This means you earned 8 X N12,500 commissions = N100,000 per week
+                                            Imagine that... Let it sink.
+
+                                            NOW YOU'RE READY TO GET STARTED WITH YOUR AFFILIATE ONLINE BUSINESS ????
                                         </Typography>
                                     </CardContent>
                                 </CardActionArea>
@@ -386,7 +376,7 @@ const ContentPage = ({history}) => {
                         </Box>
                     </Box>
                 </Box>
-                <Box sx={{width:'100%', height:'50px', bgcolor:'black', marginBottom:'20px'}}></Box>
+                <Box sx={{width:'100%', height:'50px', bgcolor:'black',marginTop:'20px', marginBottom:'20px'}}></Box>
             </Container>
         </React.Fragment>
     )

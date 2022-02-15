@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
@@ -8,38 +8,137 @@ import instagram from '../assests/instagram.png';
 import twitter from '../assests/twitter.png';
 import tiktok from '../assests/tiktok.png';
 import youtube from '../assests/youtube.png';
-import pinterest from '../assests/pinterest.png';
-import hero from '../assests/hero.jpeg';
-import book from '../assests/book.jpg';
-import code from '../assests/code.png';
-import coding from '../assests/coding.png';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
+import whatsapp from '../assests/whatsapp.png';
 import IconButton from '@mui/material/IconButton';
-import ShareIcon from '@mui/icons-material/Share';
-import { Button, CardActionArea, CardActions } from '@mui/material';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import MenuIcon from '@mui/icons-material/Menu';
-import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
+import AffiliateMarketting from './Categories.js/AffiliateMarketting';
+import {Link} from 'react-router-dom';
 
 const Home = ({history}) => {
     const [anchorEl, setAnchorEl] = React.useState(false);
-    const matches = useMediaQuery("(max-width:900px)");
     const matches2 = useMediaQuery("(max-width:1000px)");
+    const [navigateCategories, setNavigateCategories] = useState({
+        first:'1', 
+        second:'0', 
+        third:'0', 
+        fourth:'0',
+        fifth:'0'
+    });
 
     const handleClose = () => {
         setAnchorEl(!anchorEl);
     }
 
-    const ContunueReading = () => {
-        history.push('/content-page')
+    const AMData = {
+        pageHistory: history,
+        image: 'https://media.istockphoto.com/photos/the-musicians-were-playing-rock-music-on-stage-there-was-an-audience-picture-id1319479588?b=1&k=20&m=1319479588&s=170667a&w=0&h=bunblYyTDA_vnXu-nY4x4oa7ke6aiiZKntZ5mfr-4aM=',
+        cards: [
+            {
+                title:'Everything you need to know to get started with Affiliate Marketting.', 
+                firstCategory:'Marketting',
+                secondCategory:'Affiliate Marketing',
+                image:'https://media.istockphoto.com/photos/business-meeting-on-video-call-during-covid19-lockdown-picture-id1300311961?b=1&k=20&m=1300311961&s=170667a&w=0&h=NQ5Y3kvY_nBro1M1pNMzaV3l9oohkeg5o6qEtcFSD-A=',
+                caption:`Affiliate marketing is a strategic  processes involved in 
+                promoting another person's or company's products to earn a commission. 
+                Affiliate marketing is a PROVEN business model that has life changing 
+                benefits both online and offline.`
+            },
+            {
+                title:'How i made $1000 getting started with Affiliate Marketting.', 
+                firstCategory:'Marketting',
+                secondCategory:'Affiliate Marketing',
+                image:'https://media.istockphoto.com/photos/live-internet-streaming-of-business-conference-meetingonline-webinar-picture-id1318224799?b=1&k=20&m=1318224799&s=170667a&w=0&h=IFrKareX-EUv35GsKdMxmcvjGeqaTNpadpHN_qWINug=',
+                caption:`Affiliate marketing is a strategic  processes involved in 
+                promoting another person's or company's products to earn a commission. 
+                Affiliate marketing is a PROVEN business model that has life changing 
+                benefits both online and offline.`
+            }
+        ]
+    }
+
+    const Science = {
+        pageHistory: history,
+        image: 'https://media.istockphoto.com/photos/red-carpet-entrance-picture-id1066484598?b=1&k=20&m=1066484598&s=170667a&w=0&h=a7f2EfxEAYx_C0pb3r0UTkwsvstFbG9UDEaMLqvy5KU=',
+        cards: []
+    }
+
+    const PublicHealth = {
+        pageHistory: history,
+        image: 'https://media.istockphoto.com/photos/large-group-of-business-people-in-convention-centre-picture-id1281724535?b=1&k=20&m=1281724535&s=170667a&w=0&h=RV0k68y2VPMDnP6QlW_7kErXhbLcqjYVgNmwc3kMMLo=',
+        cards: []
+    }
+
+    const Education = {
+        pageHistory: history,
+        image: 'https://media.istockphoto.com/photos/futuristic-office-picture-id1187179171?b=1&k=20&m=1187179171&s=170667a&w=0&h=4utIg-YgJP2aJIFWHkdeemBDguO6XJwjSImh9sKxmbI=',
+        cards: []
+    }
+
+    const Photography = {
+        pageHistory: history,
+        image: 'https://images.unsplash.com/photo-1548088615-0795daa548c9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8NHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
+        cards: []
+    }
+
+    const firstNav = () => {
+        const data = {
+            first:'1', 
+            second:'0', 
+            third:'0', 
+            fourth:'0',
+            fifth:'0'
+        }
+        setNavigateCategories(data);
+        setAnchorEl(!anchorEl);
+    }
+    const secondNav = () => {
+        const data = {
+            first:'0', 
+            second:'1', 
+            third:'0', 
+            fourth:'0',
+            fifth:'0'
+        }
+        setNavigateCategories(data);
+        setAnchorEl(!anchorEl);
+    }
+    const thirdNav = () => {
+        const data = {
+            first:'0', 
+            second:'0', 
+            third:'1', 
+            fourth:'0',
+            fifth:'0'
+        }
+        setNavigateCategories(data);
+        setAnchorEl(!anchorEl);
+    }
+    const fourthNav = () => {
+        const data = {
+            first:'0', 
+            second:'0', 
+            third:'0', 
+            fourth:'1',
+            fifth:'0'
+        }
+        setNavigateCategories(data);
+        setAnchorEl(!anchorEl);
+    }
+    const fifthNav = () => {
+        const data = {
+            first:'0', 
+            second:'0', 
+            third:'0', 
+            fourth:'0',
+            fifth:'1'
+        }
+        setNavigateCategories(data);
+        setAnchorEl(!anchorEl);
     }
     return(
         <React.Fragment>
@@ -56,61 +155,61 @@ const Home = ({history}) => {
                             </Link>
                         </Box>
                         {!matches2?
-                            <Box sx={{width:'45%'}}>
+                            <Box sx={{width:'52%'}}>
                                 <Box sx={{display:'flex', justifyContent:'space-between'}}>
-                                    <Typography sx={{fontWeight:'bold', color:'#fff'}} variant="subtitle1" component="div">
-                                        Programming
+                                    <Typography onClick={firstNav} sx={{fontWeight:'bold', color:'#fff'}} variant="subtitle1" component="div">
+                                        Affiliate Marketting
                                     </Typography>
-                                    <Typography sx={{fontWeight:'bold', color:'#fff'}} variant="subtitle1" component="div">
-                                        Astronomy
+                                    <Typography onClick={secondNav} sx={{fontWeight:'bold', color:'#fff'}} variant="subtitle1" component="div">
+                                        Science
                                     </Typography>
-                                    <Typography sx={{fontWeight:'bold', color:'#fff'}} variant="subtitle1" component="div">
-                                        Sports
+                                    <Typography onClick={thirdNav} sx={{fontWeight:'bold', color:'#fff'}} variant="subtitle1" component="div">
+                                        Public Health
                                     </Typography>
-                                    <Typography sx={{fontWeight:'bold', color:'#fff'}} variant="subtitle1" component="div">
+                                    <Typography onClick={fourthNav} sx={{fontWeight:'bold', color:'#fff'}} variant="subtitle1" component="div">
                                         Education
                                     </Typography>
-                                    <Typography sx={{fontWeight:'bold', color:'#fff'}} variant="subtitle1" component="div">
+                                    <Typography onClick={fifthNav} sx={{fontWeight:'bold', color:'#fff'}} variant="subtitle1" component="div">
                                         Photography
                                     </Typography>
                                 </Box>
                             </Box>:
                             <div>
-                                <IconButton aria-label="share">
-                                    <MenuIcon onClick={handleClose} sx={{width:'30px', height:'30px', color:'#fff'}} />
+                                <IconButton onClick={(e) => handleClose(e, "clicked")} aria-label="share">
+                                    <MenuIcon sx={{width:'30px', height:'30px', color:'#fff'}} />
                                 </IconButton>
                                 {anchorEl&&
                                     <Box sx={{width:'200px', borderRadius:'10px', position:'absolute', right:'30px', bgcolor:'#fff'}}>
                                         <List sx={{ width: '100%', fontSize:'12px', padding:'0px', marginTop:'20px'}}>
-                                            <ListItem sx={{marginLeft:'10px',marginTop:'10px', padding:'0px'}} alignItems="flex-start">
+                                            <ListItem onClick={firstNav} sx={{marginLeft:'10px',marginTop:'10px', padding:'0px'}} alignItems="flex-start">
                                                 <ListItemText
                                                 sx={{fontSize:'12px'}}
-                                                primary="Programming"
+                                                primary="Affiliate Marketting"
                                                 />
                                             </ListItem>
                                             <Divider />
-                                            <ListItem sx={{marginLeft:'10px',marginTop:'10px', padding:'0px'}} alignItems="flex-start">
+                                            <ListItem onClick={secondNav} sx={{marginLeft:'10px',marginTop:'10px', padding:'0px'}} alignItems="flex-start">
                                                 <ListItemText
                                                 sx={{fontSize:'12px'}}
-                                                primary="Astronomy"
+                                                primary="Science"
                                                 />
                                             </ListItem>
                                             <Divider />
-                                            <ListItem sx={{marginLeft:'10px',marginTop:'10px', padding:'0px'}} alignItems="flex-start">
+                                            <ListItem onClick={thirdNav} sx={{marginLeft:'10px',marginTop:'10px', padding:'0px'}} alignItems="flex-start">
                                                 <ListItemText
                                                 sx={{fontSize:'12px'}}
-                                                primary="Sports"
+                                                primary="Public Health"
                                                 />
                                             </ListItem>
                                             <Divider />
-                                            <ListItem sx={{marginLeft:'10px',marginTop:'10px', padding:'0px'}} alignItems="flex-start">
+                                            <ListItem onClick={fourthNav} sx={{marginLeft:'10px',marginTop:'10px', padding:'0px'}} alignItems="flex-start">
                                                 <ListItemText
                                                 sx={{fontSize:'12px'}}
                                                 primary="Education"
                                                 />
                                             </ListItem>
                                             <Divider />
-                                            <ListItem sx={{marginLeft:'10px',marginTop:'10px', padding:'0px'}} alignItems="flex-start">
+                                            <ListItem onClick={fifthNav} sx={{marginLeft:'10px',marginTop:'10px', padding:'0px'}} alignItems="flex-start">
                                                 <ListItemText
                                                 sx={{fontSize:'12px'}}
                                                 primary="Photography"
@@ -127,383 +226,47 @@ const Home = ({history}) => {
                     {/* the hero starts here*/}
                     <Box mt={3} mb={1} sx={social}>
                         <Box sx={{width:'230px', display:'flex', justifyContent:'space-between'}}>
-                            <img style={{width:'30px', height:'30px'}} alt={'icon'} src={facebook} />
-                            <img style={{width:'30px', height:'30px'}} alt={'icon'} src={twitter} />
-                            <img style={{width:'30px', height:'30px'}} alt={'icon'} src={instagram} />
-                            <img style={{width:'30px', height:'30px'}} alt={'icon'} src={youtube} />
-                            <img style={{width:'30px', height:'30px'}} alt={'icon'} src={tiktok} />
-                            <img style={{width:'30px', height:'30px'}} alt={'icon'} src={pinterest} />
+                            <a href='https://m.facebook.com/ummayman.umita#!/photo.php?fbid=1166775844068683&id=100022088340625&set=a.121847258561552&source=48&refid=17&_ft_=mf_story_key.1166775890735345%3Atop_level_post_id.1166775890735345%3Atl_objid.1166775890735345%3Acontent_owner_id_new.100022088340625%3Athrowback_story_fbid.1166775890735345%3Astory_location.4%3Astory_attachment_style.photo%3Athid.100022088340625%3A306061129499414%3A2%3A0%3A1646121599%3A-3763917111927816124%3A%3A&__tn__=EH-R'>
+                                <img style={{width:'30px', height:'30px'}} alt={'icon'} src={facebook} />
+                            </a>
+                            <a href="https://www.twitter.com">
+                                <img style={{width:'30px', height:'30px'}} alt={'icon'} src={twitter} />
+                            </a>
+                            <a href="https://www.instagram.com">
+                                <img style={{width:'30px', height:'30px'}} alt={'icon'} src={instagram} />
+                            </a>
+                            <a href="https://www.youtube.com">
+                                <img style={{width:'30px', height:'30px'}} alt={'icon'} src={youtube} />
+                            </a>
+                            <a href="https://www.tiktok.com">
+                                <img style={{width:'30px', height:'30px'}} alt={'icon'} src={tiktok} />
+                            </a>
+                            <a href="https://wa.link/0ofsu7">
+                                <img style={{width:'30px', height:'30px'}} alt={'icon'} src={whatsapp} />
+                            </a>
                         </Box>
                     </Box>
-                    <Box sx={{height:'350px', bgcolor:'red'}}>
-                        <img style={{width:'100%', height:'100%'}} alt={'icon'} src={hero} />
-                    </Box>
-
-                    {/* the blog card starts here*/}
-                    <Box mt={3} sx={matches?main2:main}>
-                        <Box sx={matches?cardContainer2:cardContainer1}>
-                            <Card sx={matches?card2:card1}>
-                                <CardActionArea>
-                                    <CardMedia
-                                        component="img"
-                                        height="250"
-                                        image={book}
-                                        alt="green iguana"
-                                        sx={{
-                                            width:'100%',
-                                        }}
-                                    />
-                                    <CardContent>
-                                        <Typography gutterBottom sx={{fontWeight:'bold'}} variant="h6" component="div">
-                                            Useful Chrome Extensions that you shouldn't Miss Out
-                                        </Typography>
-                                        <Box sx={{display:'flex', flexDirection:'row', alignItems:'center'}}>
-                                            <Box sx={{display:'flex', flexDirection:'row', alignItems:'center'}}>
-                                                <img style={{width:'15px', height:'15px'}} alt={'icon'} src={code} />
-                                                <Typography sx={{marginLeft:'8px', fontSize:'12px', marginTop:'1px', color:'#000'}} variant="subtitle1" component="div">
-                                                    Development
-                                                </Typography>
-                                            </Box>
-                                            <Box sx={{marginLeft:'20px', display:'flex', flexDirection:'row', alignItems:'center'}}>
-                                                <img style={{width:'15px', height:'15px'}} alt={'icon'} src={coding} />
-                                                <Typography sx={{marginLeft:'8px', fontSize:'12px', marginTop:'1px', color:'#000'}} variant="subtitle1" component="div">
-                                                    Programming
-                                                </Typography>
-                                            </Box>
-                                        </Box>
-                                        <Typography mt={2} variant="body2" color="text.secondary">
-                                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                                            species, ranging across all continents except Antarctica Lizards are a 
-                                            widespread group of squamate reptiles, with over 6,000 species, ranging 
-                                            across all continents except Antarctica
-                                        </Typography>
-                                    </CardContent>
-                                </CardActionArea>
-                                <CardActions>
-                                    <Button onClick={ContunueReading} sx={buttons} size="small" color="primary">
-                                        Continue Reading
-                                    </Button>
-                                    <IconButton aria-label="share">
-                                        <ShareIcon />
-                                    </IconButton>
-                                </CardActions>
-                            </Card>
-
-                            <Card sx={{padding:'10px', marginBottom:'20px'}}>
-                                <CardActionArea>
-                                    <CardMedia
-                                        component="img"
-                                        height="250"
-                                        image={book}
-                                        alt="green iguana"
-                                        sx={{
-                                            width:'100%',
-                                        }}
-                                    />
-                                    <CardContent>
-                                        <Typography gutterBottom sx={{fontWeight:'bold'}} variant="h6" component="div">
-                                            Useful Chrome Extensions that you shouldn't Miss Out
-                                        </Typography>
-                                        <Box sx={{display:'flex', flexDirection:'row', alignItems:'center'}}>
-                                            <Box sx={{display:'flex', flexDirection:'row', alignItems:'center'}}>
-                                                <img style={{width:'15px', height:'15px'}} alt={'icon'} src={code} />
-                                                <Typography sx={{marginLeft:'8px', fontSize:'12px', marginTop:'1px', color:'#000'}} variant="subtitle1" component="div">
-                                                    Development
-                                                </Typography>
-                                            </Box>
-                                            <Box sx={{marginLeft:'20px', display:'flex', flexDirection:'row', alignItems:'center'}}>
-                                                <img style={{width:'15px', height:'15px'}} alt={'icon'} src={coding} />
-                                                <Typography sx={{marginLeft:'8px', fontSize:'12px', marginTop:'1px', color:'#000'}} variant="subtitle1" component="div">
-                                                    Programming
-                                                </Typography>
-                                            </Box>
-                                        </Box>
-                                        <Typography mt={2} variant="body2" color="text.secondary">
-                                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                                            species, ranging across all continents except Antarctica Lizards are a 
-                                            widespread group of squamate reptiles, with over 6,000 species, ranging 
-                                            across all continents except Antarctica
-                                        </Typography>
-                                    </CardContent>
-                                </CardActionArea>
-                                <CardActions>
-                                    <Button onClick={ContunueReading} sx={buttons} size="small" color="primary">
-                                        Continue Reading
-                                    </Button>
-                                    <IconButton aria-label="share">
-                                        <ShareIcon />
-                                    </IconButton>
-                                </CardActions>
-                            </Card>
-
-                            <Card sx={{padding:'10px', marginBottom:'20px'}}>
-                                <CardActionArea>
-                                    <CardMedia
-                                        component="img"
-                                        height="250"
-                                        image={book}
-                                        alt="green iguana"
-                                        sx={{
-                                            width:'100%',
-                                        }}
-                                    />
-                                    <CardContent>
-                                        <Typography gutterBottom sx={{fontWeight:'bold'}} variant="h6" component="div">
-                                            Useful Chrome Extensions that you shouldn't Miss Out
-                                        </Typography>
-                                        <Box sx={{display:'flex', flexDirection:'row', alignItems:'center'}}>
-                                            <Box sx={{display:'flex', flexDirection:'row', alignItems:'center'}}>
-                                                <img style={{width:'15px', height:'15px'}} alt={'icon'} src={code} />
-                                                <Typography sx={{marginLeft:'8px', fontSize:'12px', marginTop:'1px', color:'#000'}} variant="subtitle1" component="div">
-                                                    Development
-                                                </Typography>
-                                            </Box>
-                                            <Box sx={{marginLeft:'20px', display:'flex', flexDirection:'row', alignItems:'center'}}>
-                                                <img style={{width:'15px', height:'15px'}} alt={'icon'} src={coding} />
-                                                <Typography sx={{marginLeft:'8px', fontSize:'12px', marginTop:'1px', color:'#000'}} variant="subtitle1" component="div">
-                                                    Programming
-                                                </Typography>
-                                            </Box>
-                                        </Box>
-                                        <Typography mt={2} variant="body2" color="text.secondary">
-                                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                                            species, ranging across all continents except Antarctica Lizards are a 
-                                            widespread group of squamate reptiles, with over 6,000 species, ranging 
-                                            across all continents except Antarctica
-                                        </Typography>
-                                    </CardContent>
-                                </CardActionArea>
-                                <CardActions>
-                                    <Button onClick={ContunueReading} sx={buttons} size="small" color="primary">
-                                        Continue Reading
-                                    </Button>
-                                    <IconButton aria-label="share">
-                                        <ShareIcon />
-                                    </IconButton>
-                                </CardActions>
-                            </Card>
-
-                            <Card sx={{padding:'10px', marginBottom:'20px'}}>
-                                <CardActionArea>
-                                    <CardMedia
-                                        component="img"
-                                        height="250"
-                                        image={book}
-                                        alt="green iguana"
-                                        sx={{
-                                            width:'100%',
-                                        }}
-                                    />
-                                    <CardContent>
-                                        <Typography gutterBottom sx={{fontWeight:'bold'}} variant="h6" component="div">
-                                            Useful Chrome Extensions that you shouldn't Miss Out
-                                        </Typography>
-                                        <Box sx={{display:'flex', flexDirection:'row', alignItems:'center'}}>
-                                            <Box sx={{display:'flex', flexDirection:'row', alignItems:'center'}}>
-                                                <img style={{width:'15px', height:'15px'}} alt={'icon'} src={code} />
-                                                <Typography sx={{marginLeft:'8px', fontSize:'12px', marginTop:'1px', color:'#000'}} variant="subtitle1" component="div">
-                                                    Development
-                                                </Typography>
-                                            </Box>
-                                            <Box sx={{marginLeft:'20px', display:'flex', flexDirection:'row', alignItems:'center'}}>
-                                                <img style={{width:'15px', height:'15px'}} alt={'icon'} src={coding} />
-                                                <Typography sx={{marginLeft:'8px', fontSize:'12px', marginTop:'1px', color:'#000'}} variant="subtitle1" component="div">
-                                                    Programming
-                                                </Typography>
-                                            </Box>
-                                        </Box>
-                                        <Typography mt={2} variant="body2" color="text.secondary">
-                                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                                            species, ranging across all continents except Antarctica Lizards are a 
-                                            widespread group of squamate reptiles, with over 6,000 species, ranging 
-                                            across all continents except Antarctica
-                                        </Typography>
-                                    </CardContent>
-                                </CardActionArea>
-                                <CardActions>
-                                    <Button onClick={ContunueReading} sx={buttons} size="small" color="primary">
-                                        Continue Reading
-                                    </Button>
-                                    <IconButton aria-label="share">
-                                        <ShareIcon />
-                                    </IconButton>
-                                </CardActions>
-                            </Card>
-
-                            <Card sx={{padding:'10px', marginBottom:'20px'}}>
-                                <CardActionArea>
-                                    <CardMedia
-                                        component="img"
-                                        height="250"
-                                        image={book}
-                                        alt="green iguana"
-                                        sx={{
-                                            width:'100%',
-                                        }}
-                                    />
-                                    <CardContent>
-                                        <Typography gutterBottom sx={{fontWeight:'bold'}} variant="h6" component="div">
-                                            Useful Chrome Extensions that you shouldn't Miss Out
-                                        </Typography>
-                                        <Box sx={{display:'flex', flexDirection:'row', alignItems:'center'}}>
-                                            <Box sx={{display:'flex', flexDirection:'row', alignItems:'center'}}>
-                                                <img style={{width:'15px', height:'15px'}} alt={'icon'} src={code} />
-                                                <Typography sx={{marginLeft:'8px', fontSize:'12px', marginTop:'1px', color:'#000'}} variant="subtitle1" component="div">
-                                                    Development
-                                                </Typography>
-                                            </Box>
-                                            <Box sx={{marginLeft:'20px', display:'flex', flexDirection:'row', alignItems:'center'}}>
-                                                <img style={{width:'15px', height:'15px'}} alt={'icon'} src={coding} />
-                                                <Typography sx={{marginLeft:'8px', fontSize:'12px', marginTop:'1px', color:'#000'}} variant="subtitle1" component="div">
-                                                    Programming
-                                                </Typography>
-                                            </Box>
-                                        </Box>
-                                        <Typography mt={2} variant="body2" color="text.secondary">
-                                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                                            species, ranging across all continents except Antarctica Lizards are a 
-                                            widespread group of squamate reptiles, with over 6,000 species, ranging 
-                                            across all continents except Antarctica
-                                        </Typography>
-                                    </CardContent>
-                                </CardActionArea>
-                                <CardActions>
-                                    <Button onClick={ContunueReading} sx={buttons} size="small" color="primary">
-                                        Continue Reading
-                                    </Button>
-                                    <IconButton aria-label="share">
-                                        <ShareIcon />
-                                    </IconButton>
-                                </CardActions>
-                            </Card>
-                        </Box>
-                        <Box sx={matches?sideBar2:sideBar}>
-                            <Box sx={{bgcolor:'#fff', paddingLeft:'20px', paddingRight:'20px', height:'270px', borderRadius:'5px'}}>
-                                <Box sx={recentHeader}>
-                                    <Typography sx={{
-                                        fontSize:'14px', 
-                                        fontWeight:'bold', 
-                                        color:'#000'}} variant="subtitle1" component="div">
-                                        Categories
-                                    </Typography>
-                                </Box>
-                                <List sx={{ width: '100%', fontSize:'12px', padding:'0px', marginTop:'20px'}}>
-                                    <ListItem sx={{margin:'0px', marginBottom:'8px', padding:'0px'}} alignItems="flex-start">
-                                        <ListItemAvatar>
-                                            <Avatar alt="Remy Sharp" src={hero} />
-                                        </ListItemAvatar>
-                                        <ListItemText
-                                        sx={{fontSize:'12px'}}
-                                        primary="Oct 11, 2021"
-                                        secondary={
-                                            <React.Fragment>
-                                                <Typography
-                                                    sx={{ display: 'inline', fontSize:'12px' }}
-                                                    component="span"
-                                                    variant="body2"
-                                                    color="text.primary"
-                                                >
-                                                    React.js course 2021
-                                                </Typography>
-                                            </React.Fragment>
-                                        }
-                                        />
-                                    </ListItem>
-                                    <ListItem sx={{margin:'0px', marginBottom:'8px', padding:'0px'}} alignItems="flex-start">
-                                        <ListItemAvatar>
-                                            <Avatar alt="Remy Sharp" src={hero} />
-                                        </ListItemAvatar>
-                                        <ListItemText
-                                        sx={{fontSize:'12px'}}
-                                        primary="Oct 11, 2021"
-                                        secondary={
-                                            <React.Fragment>
-                                                <Typography
-                                                    sx={{ display: 'inline', fontSize:'12px' }}
-                                                    component="span"
-                                                    variant="body2"
-                                                    color="text.primary"
-                                                >
-                                                    React.js course 2021
-                                                </Typography>
-                                            </React.Fragment>
-                                        }
-                                        />
-                                    </ListItem>
-                                    <ListItem sx={{margin:'0px', marginBottom:'8px', padding:'0px'}} alignItems="flex-start">
-                                        <ListItemAvatar>
-                                            <Avatar alt="Remy Sharp" src={hero} />
-                                        </ListItemAvatar>
-                                        <ListItemText
-                                        sx={{fontSize:'12px'}}
-                                        primary="Oct 11, 2021"
-                                        secondary={
-                                            <React.Fragment>
-                                                <Typography
-                                                    sx={{ display: 'inline', fontSize:'12px' }}
-                                                    component="span"
-                                                    variant="body2"
-                                                    color="text.primary"
-                                                >
-                                                    React.js course 2021
-                                                </Typography>
-                                            </React.Fragment>
-                                        }
-                                        />
-                                    </ListItem>
-                                </List>
-                            </Box>
-                            <Box sx={{bgcolor:'#fff', marginTop:'20px', paddingLeft:'20px', paddingRight:'20px', height:'300px', borderRadius:'5px'}}>
-                                <Box sx={recentHeader}>
-                                    <Typography sx={{
-                                        fontSize:'14px', 
-                                        fontWeight:'bold', 
-                                        color:'#000'}} variant="subtitle1" component="div">
-                                        Recent Posts
-                                    </Typography>
-                                </Box>
-                                <List sx={{ width: '100%', fontSize:'12px', padding:'0px', marginTop:'20px'}}>
-                                    <ListItem sx={{margin:'0px',marginTop:'10px', padding:'0px'}} alignItems="flex-start">
-                                        <ListItemText
-                                        sx={{fontSize:'12px'}}
-                                        primary="Programming"
-                                        />
-                                    </ListItem>
-                                    <Divider />
-                                    <ListItem sx={{margin:'0px',marginTop:'10px', padding:'0px'}} alignItems="flex-start">
-                                        <ListItemText
-                                        sx={{fontSize:'12px'}}
-                                        primary="Astronomy"
-                                        />
-                                    </ListItem>
-                                    <Divider />
-                                    <ListItem sx={{margin:'0px',marginTop:'10px', padding:'0px'}} alignItems="flex-start">
-                                        <ListItemText
-                                        sx={{fontSize:'12px'}}
-                                        primary="Sports"
-                                        />
-                                    </ListItem>
-                                    <Divider />
-                                    <ListItem sx={{margin:'0px',marginTop:'10px', padding:'0px'}} alignItems="flex-start">
-                                        <ListItemText
-                                        sx={{fontSize:'12px'}}
-                                        primary="Education"
-                                        />
-                                    </ListItem>
-                                    <Divider />
-                                    <ListItem sx={{margin:'0px',marginTop:'10px', padding:'0px'}} alignItems="flex-start">
-                                        <ListItemText
-                                        sx={{fontSize:'12px'}}
-                                        primary="Photography"
-                                        />
-                                    </ListItem>
-                                    <Divider />
-                                </List>
-                            </Box>
-                        </Box>
-                    </Box>
+                    {
+                        navigateCategories.first==='1'&& <AffiliateMarketting data={AMData} />
+                    }
+                    {
+                        navigateCategories.second==='1'&& <AffiliateMarketting data={Science} />
+                    }
+                    {
+                        navigateCategories.third==='1'&& <AffiliateMarketting data={PublicHealth} />
+                    }
+                    {
+                        navigateCategories.fourth==='1'&& <AffiliateMarketting data={Education} />
+                    }
+                    {
+                        navigateCategories.fifth==='1'&& <AffiliateMarketting data={Photography} />
+                    }
                 </Box>
-                <Box sx={{width:'100%', height:'50px', bgcolor:'black', marginBottom:'20px'}}></Box>
+                <Box mb={10} sx={footer}>
+                    <Typography sx={{marginLeft:'8px', fontSize:'12px', marginTop:'1px', color:'#fff'}} variant="subtitle1" component="div">
+                        c 2009
+                    </Typography>
+                </Box>
             </Container>
         </React.Fragment>
     )
@@ -526,71 +289,13 @@ const social = {
     justifyContent:'flex-end',
 }
 
-const main = {
-    width:'100%',
-    height:'100%', 
-    display:'flex', 
-    flexDirection:'row',
-    justifyContent:'space-between'
-}
-
-const main2 = {
-    width:'100%',
-    height:'100%', 
-    display:'flex', 
-    flexDirection:'column',
-    justifyContent:'space-between',
-}
-
-const buttons = {
-    bgcolor:'red',
-    height:'35px',
-    width:'150px', 
-    color:'#fff', 
-    fontSize:'11px', 
-    fontWeight:'bold',
-    '&:hover': {
-        backgroundColor: 'red',
-        color: '#fff'
-    },
-}
-
-const sideBar = {
-    width:'28%', 
-    borderRadius:'5px', 
-}
-
-const sideBar2 = {
+const footer = {
     width:'100%', 
-    borderRadius:'5px', 
-}
-
-const recentHeader = {
     height:'50px', 
-    paddingTop:'20px',
-    border:'1px solid #ccc',
-    borderLeft:'none', 
-    borderRight:'none',
-    borderTop:'none',
-}
-
-const card1 = {
-    padding:'10px', 
-    marginBottom:'20px'
-}
-
-const card2 = {
-    width:'100%',
-    padding:'10px', 
-    marginBottom:'20px'
-}
-
-const cardContainer1 = {
-    width:'70%', 
-}
-
-const cardContainer2 = {
-    width:'100%', 
+    bgcolor:'black', 
+    marginTop:'20px', 
+    display:'flex',
+    alignItems:'flex-end'
 }
 
 export default Home;

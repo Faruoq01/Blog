@@ -29,7 +29,7 @@ const Login = ({history}) => {
                         </Typography>
                         <Stack sx={{width:'90%'}} direction="column" spacing={5}>
                             <TextField
-                                id="outlined-number"
+                                className="outlined-number"
                                 label="Email"
                                 type="text"
                                 size="small"
@@ -37,14 +37,14 @@ const Login = ({history}) => {
                                 onChange={(text) => setEmail(text.target.value)}
                             />
                             <TextField
-                                id="outlined-number"
+                                className="outlined-number"
                                 label="Password"
                                 type="password"
                                 size="small"
                                 sx={inputs}
                                 onChange={(text) => setPassword(text.target.value)}
                             />
-                            <Button onClick={(e) => loginToHome(e, "clicked")} variant="contained">Sign in</Button>
+                            <button style={button} onClick={loginToHome}>Sign in</button>
                             <Stack sx={{width:'100%', display:'flex', justifyContent:'space-between'}} direction="row">
                                 <Link
                                     component="button"
@@ -108,6 +108,13 @@ const login2 = {
 const inputs = {
     height:'30px',
     fontSize:'10px'
+}
+
+const button = {
+    width:'100%',
+    height:'35px',
+    color:'#fff',
+    backgroundColor:'#07a3b2'
 }
 
 export default Login;
