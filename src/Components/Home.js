@@ -229,10 +229,10 @@ const Home = ({history}) => {
                             <a href='https://m.facebook.com/ummayman.umita#!/photo.php?fbid=1166775844068683&id=100022088340625&set=a.121847258561552&source=48&refid=17&_ft_=mf_story_key.1166775890735345%3Atop_level_post_id.1166775890735345%3Atl_objid.1166775890735345%3Acontent_owner_id_new.100022088340625%3Athrowback_story_fbid.1166775890735345%3Astory_location.4%3Astory_attachment_style.photo%3Athid.100022088340625%3A306061129499414%3A2%3A0%3A1646121599%3A-3763917111927816124%3A%3A&__tn__=EH-R'>
                                 <img style={{width:'30px', height:'30px'}} alt={'icon'} src={facebook} />
                             </a>
-                            <a href="https://www.twitter.com">
+                            <a href="https://twitter.com/Sharifa844?t=B_vba4ADC8gJgsaifdiwMg&s=08">
                                 <img style={{width:'30px', height:'30px'}} alt={'icon'} src={twitter} />
                             </a>
-                            <a href="https://www.instagram.com">
+                            <a href="http://www.sashbloomingcollections.com/">
                                 <img style={{width:'30px', height:'30px'}} alt={'icon'} src={instagram} />
                             </a>
                             <a href="https://www.youtube.com">
